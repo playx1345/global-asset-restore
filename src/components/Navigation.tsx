@@ -2,10 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Shield } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -40,11 +42,27 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="action" asChild>
-              <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
-                Start Recovery
-              </a>
-            </Button>
+            {user ? (
+              <>
+                <Button variant="outline" asChild>
+                  <Link to="/portal">Portal</Link>
+                </Button>
+                <Button variant="action" onClick={() => signOut()}>
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" asChild>
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+                <Button variant="action" asChild>
+                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                    Start Recovery
+                  </a>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,11 +90,27 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="action" className="w-full" asChild>
-              <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
-                Start Recovery
-              </a>
-            </Button>
+            {user ? (
+              <>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/portal" onClick={() => setIsOpen(false)}>Portal</Link>
+                </Button>
+                <Button variant="action" className="w-full" onClick={() => { signOut(); setIsOpen(false); }}>
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/auth" onClick={() => setIsOpen(false)}>Sign In</Link>
+                </Button>
+                <Button variant="action" className="w-full" asChild>
+                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                    Start Recovery
+                  </a>
+                </Button>
+              </>
+            )}
           </div>
         )}
       </div>
