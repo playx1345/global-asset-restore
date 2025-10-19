@@ -4,6 +4,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { CaseDetailDialog } from '@/components/admin/CaseDetailDialog';
+import { Button } from '@/components/ui/button';
 
 interface Case {
   id: string;
@@ -12,15 +14,21 @@ interface Case {
   status: string;
   priority: string;
   created_at: string;
+  assigned_to: string | null;
   profiles: {
     full_name: string;
   };
+  assigned_profile?: {
+    full_name: string;
+  } | null;
 }
 
 export default function CaseManagement() {
   const [cases, setCases] = useState<Case[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
     fetchCases();
@@ -31,25 +39,42 @@ export default function CaseManagement() {
       const { data, error } = await supabase
         .from('cases')
         .select(`
-          id,
-          title,
-          description,
-          status,
-          priority,
-          created_at,
-          profiles:client_id (
+          *,
+          profiles!cases_client_id_fkey (
             full_name
           )
         `)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setCases(data || []);
+
+      // Fetch assigned profiles separately
+      const casesWithAssignments = await Promise.all(
+        (data || []).map(async (caseItem) => {
+          if (caseItem.assigned_to) {
+            const { data: assignedProfile } = await supabase
+              .from('profiles')
+              .select('full_name')
+              .eq('id', caseItem.assigned_to)
+              .single();
+            
+            return { ...caseItem, assigned_profile: assignedProfile };
+          }
+          return { ...caseItem, assigned_profile: null };
+        })
+      );
+
+      setCases(casesWithAssignments);
     } catch (error) {
       console.error('Error fetching cases:', error);
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleCaseClick(caseId: string) {
+    setSelectedCaseId(caseId);
+    setDialogOpen(true);
   }
 
   const filteredCases = statusFilter === 'all' 
@@ -106,9 +131,11 @@ export default function CaseManagement() {
             <TableRow>
               <TableHead>Title</TableHead>
               <TableHead>Client</TableHead>
+              <TableHead>Assigned To</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Priority</TableHead>
               <TableHead>Created</TableHead>
+              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -116,6 +143,11 @@ export default function CaseManagement() {
               <TableRow key={caseItem.id}>
                 <TableCell className="font-medium">{caseItem.title}</TableCell>
                 <TableCell>{caseItem.profiles?.full_name || 'Unknown'}</TableCell>
+                <TableCell>
+                  {caseItem.assigned_profile?.full_name || (
+                    <span className="text-muted-foreground text-sm">Unassigned</span>
+                  )}
+                </TableCell>
                 <TableCell>
                   <Badge className={getStatusColor(caseItem.status)}>
                     {caseItem.status.replace('_', ' ')}
@@ -129,11 +161,27 @@ export default function CaseManagement() {
                 <TableCell>
                   {new Date(caseItem.created_at).toLocaleDateString()}
                 </TableCell>
+                <TableCell>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleCaseClick(caseItem.id)}
+                  >
+                    View Details
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
+
+      <CaseDetailDialog
+        caseId={selectedCaseId}
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        onUpdate={fetchCases}
+      />
     </div>
   );
 }
