@@ -14,6 +14,47 @@ export type Database = {
   }
   public: {
     Tables: {
+      cases: {
+        Row: {
+          client_id: string
+          created_at: string
+          description: string
+          id: string
+          priority: Database["public"]["Enums"]["case_priority"]
+          status: Database["public"]["Enums"]["case_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          description: string
+          id?: string
+          priority?: Database["public"]["Enums"]["case_priority"]
+          status?: Database["public"]["Enums"]["case_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          description?: string
+          id?: string
+          priority?: Database["public"]["Enums"]["case_priority"]
+          status?: Database["public"]["Enums"]["case_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cases_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
@@ -74,6 +115,8 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "agent" | "client"
+      case_priority: "low" | "medium" | "high" | "urgent"
+      case_status: "pending" | "in_progress" | "resolved" | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -202,6 +245,8 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "agent", "client"],
+      case_priority: ["low", "medium", "high", "urgent"],
+      case_status: ["pending", "in_progress", "resolved", "closed"],
     },
   },
 } as const
