@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from 'sonner';
+import { useToast } from '@/hooks/use-toast';
 
 interface Case {
   id: string;
@@ -25,6 +25,7 @@ export default function ClientCases() {
   const [cases, setCases] = useState<Case[]>([]);
   const [loading, setLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -34,8 +35,31 @@ export default function ClientCases() {
   useEffect(() => {
     if (user) {
       fetchCases();
+      subscribeToRealtime();
     }
   }, [user]);
+
+  const subscribeToRealtime = () => {
+    const channel = supabase
+      .channel('client-case-updates')
+      .on('postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'cases', filter: `client_id=eq.${user?.id}` },
+        (payload) => {
+          if (payload.new.status !== payload.old.status) {
+            toast({
+              title: "Case Status Updated",
+              description: `Your case "${payload.new.title}" status changed to ${payload.new.status.replace('_', ' ')}`
+            });
+          }
+          fetchCases();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  };
 
   async function fetchCases() {
     try {
@@ -69,13 +93,20 @@ export default function ClientCases() {
 
       if (error) throw error;
 
-      toast.success('Case submitted successfully!');
+      toast({
+        title: "Success",
+        description: "Case submitted successfully!"
+      });
       setIsDialogOpen(false);
       setFormData({ title: '', description: '', priority: 'medium' });
       fetchCases();
     } catch (error) {
       console.error('Error submitting case:', error);
-      toast.error('Failed to submit case');
+      toast({
+        title: "Error",
+        description: "Failed to submit case",
+        variant: "destructive"
+      });
     }
   }
 

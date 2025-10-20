@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { toast } from '@/hooks/use-toast';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useToast } from '@/hooks/use-toast';
 import { CaseComments } from '@/components/case/CaseComments';
+import { CaseAttachments } from '@/components/case/CaseAttachments';
+import { CaseChat } from '@/components/case/CaseChat';
+import { useAuth } from '@/hooks/useAuth';
+import { format } from 'date-fns';
 
 interface Profile {
   id: string;
@@ -37,15 +41,34 @@ interface CaseDetailDialogProps {
 export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseDetailDialogProps) {
   const [caseData, setCaseData] = useState<Case | null>(null);
   const [admins, setAdmins] = useState<Profile[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
+  const { toast } = useToast();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (open && caseId) {
       fetchCaseData();
       fetchAdmins();
+      subscribeToRealtime();
     }
   }, [open, caseId]);
+
+  const subscribeToRealtime = () => {
+    if (!caseId) return;
+    
+    const channel = supabase
+      .channel(`case-${caseId}`)
+      .on('postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'cases', filter: `id=eq.${caseId}` },
+        () => fetchCaseData()
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  };
 
   async function fetchCaseData() {
     if (!caseId) return;
@@ -79,7 +102,6 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
 
   async function fetchAdmins() {
     try {
-      // First get all admin user IDs
       const { data: adminRoles, error: rolesError } = await supabase
         .from('user_roles')
         .select('user_id')
@@ -89,7 +111,6 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
 
       const adminIds = adminRoles?.map((r) => r.user_id) || [];
 
-      // Then fetch their profiles
       if (adminIds.length > 0) {
         const { data: profiles, error: profilesError } = await supabase
           .from('profiles')
@@ -135,6 +156,22 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
     }
   }
 
+  if (loading) {
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <Skeleton className="h-8 w-64" />
+          </DialogHeader>
+          <div className="space-y-4">
+            <Skeleton className="h-20 w-full" />
+            <Skeleton className="h-32 w-full" />
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   if (!caseData) return null;
 
   return (
@@ -142,27 +179,26 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl">{caseData.title}</DialogTitle>
+          <p className="text-sm text-muted-foreground">
+            Client: {caseData.profiles?.full_name || 'Unknown'}
+          </p>
         </DialogHeader>
 
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <div className="space-y-6">
-            {/* Case Details */}
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground mb-2">Client</h3>
-                <p>{caseData.profiles?.full_name || 'Unknown'}</p>
-              </div>
+        <div className="space-y-4">
+          <p className="text-sm text-muted-foreground">{caseData.description}</p>
 
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground mb-2">Description</h3>
-                <p className="text-sm">{caseData.description}</p>
-              </div>
+          <Tabs defaultValue="details" className="w-full">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="details">Details</TabsTrigger>
+              <TabsTrigger value="comments">Comments</TabsTrigger>
+              <TabsTrigger value="attachments">Attachments</TabsTrigger>
+              <TabsTrigger value="chat">Chat</TabsTrigger>
+            </TabsList>
 
-              <div className="grid grid-cols-2 gap-4">
+            <TabsContent value="details" className="space-y-4 mt-4">
+              <div className="space-y-4">
                 <div>
-                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Status</h3>
+                  <label className="text-sm font-medium">Status</label>
                   <Select
                     value={caseData.status}
                     onValueChange={(value) => updateCase('status', value)}
@@ -181,7 +217,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium text-muted-foreground mb-2">Priority</h3>
+                  <label className="text-sm font-medium">Priority</label>
                   <Select
                     value={caseData.priority}
                     onValueChange={(value) => updateCase('priority', value)}
@@ -198,45 +234,50 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                     </SelectContent>
                   </Select>
                 </div>
+
+                <div>
+                  <label className="text-sm font-medium">Assigned To</label>
+                  <Select
+                    value={caseData.assigned_to || 'unassigned'}
+                    onValueChange={(value) => updateCase('assigned_to', value === 'unassigned' ? null : value)}
+                    disabled={updating}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="unassigned">Unassigned</SelectItem>
+                      {admins.map((admin) => (
+                        <SelectItem key={admin.id} value={admin.id}>
+                          {admin.full_name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium">Created</label>
+                  <p className="text-sm text-muted-foreground">
+                    {format(new Date(caseData.created_at), 'PPpp')}
+                  </p>
+                </div>
               </div>
+            </TabsContent>
 
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground mb-2">Assigned To</h3>
-                <Select
-                  value={caseData.assigned_to || 'unassigned'}
-                  onValueChange={(value) =>
-                    updateCase('assigned_to', value === 'unassigned' ? null : value)
-                  }
-                  disabled={updating}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Unassigned" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="unassigned">Unassigned</SelectItem>
-                    {admins.map((admin) => (
-                      <SelectItem key={admin.id} value={admin.id}>
-                        {admin.full_name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+            <TabsContent value="comments" className="mt-4">
+              <CaseComments caseId={caseId!} clientId={caseData.client_id} />
+            </TabsContent>
 
-              <div>
-                <h3 className="text-sm font-medium text-muted-foreground mb-2">Created</h3>
-                <p className="text-sm">
-                  {new Date(caseData.created_at).toLocaleString()}
-                </p>
-              </div>
-            </div>
+            <TabsContent value="attachments" className="mt-4">
+              <CaseAttachments caseId={caseId!} isAdmin={true} />
+            </TabsContent>
 
-            <Separator />
-
-            {/* Comments Section */}
-            <CaseComments caseId={caseId!} clientId={caseData.client_id} />
-          </div>
-        )}
+            <TabsContent value="chat" className="mt-4">
+              <CaseChat caseId={caseId!} currentUserId={user?.id || ''} />
+            </TabsContent>
+          </Tabs>
+        </div>
       </DialogContent>
     </Dialog>
   );

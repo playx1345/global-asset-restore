@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CaseDetailDialog } from '@/components/admin/CaseDetailDialog';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 interface Case {
   id: string;
@@ -29,10 +30,36 @@ export default function CaseManagement() {
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     fetchCases();
+    subscribeToRealtime();
   }, []);
+
+  const subscribeToRealtime = () => {
+    const channel = supabase
+      .channel('case-updates')
+      .on('postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'cases' },
+        (payload) => {
+          toast({
+            title: "New Case Created",
+            description: `Case "${payload.new.title}" has been created`
+          });
+          fetchCases();
+        }
+      )
+      .on('postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'cases' },
+        () => fetchCases()
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  };
 
   async function fetchCases() {
     try {
