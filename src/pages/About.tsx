@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Shield, Users, Target, Award } from "lucide-react";
+import aboutHeroImage from "@/assets/about-hero-bg.jpg";
 
 const About = () => {
   return (
@@ -10,8 +11,16 @@ const About = () => {
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-hero text-primary-foreground py-20">
-          <div className="container mx-auto px-4">
+        <section className="relative text-primary-foreground py-20 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={aboutHeroImage} 
+              alt="Global Tech Recovery team" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">About Global Tech Recovery</h1>
               <p className="text-xl text-primary-foreground/90">

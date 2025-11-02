@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, FileSearch, Wallet, CheckCircle2, Shield, DollarSign } from "lucide-react";
+import howItWorksHeroImage from "@/assets/how-it-works-hero-bg.jpg";
+import howItWorksCtaImage from "@/assets/how-it-works-cta-bg.jpg";
 
 const steps = [
   {
@@ -67,8 +69,16 @@ const HowItWorks = () => {
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-hero text-primary-foreground py-20">
-          <div className="container mx-auto px-4">
+        <section className="relative text-primary-foreground py-20 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={howItWorksHeroImage} 
+              alt="Recovery process collaboration" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">How It Works</h1>
               <p className="text-xl text-primary-foreground/90">
@@ -153,18 +163,28 @@ const HowItWorks = () => {
         {/* CTA */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <Card className="p-12 text-center shadow-elegant max-w-3xl mx-auto bg-gradient-hero text-primary-foreground">
-              <h2 className="text-3xl font-bold mb-4">Ready to Begin Your Recovery?</h2>
-              <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Don't wait another day. Contact us now for a free consultation and take the first step 
-                toward recovering your digital assets.
-              </p>
-              <Button variant="hero" size="lg" asChild>
-                <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
-                  Start Free Consultation
-                </a>
-              </Button>
-            </Card>
+            <div className="relative max-w-3xl mx-auto overflow-hidden rounded-lg shadow-elegant">
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src={howItWorksCtaImage} 
+                  alt="Partnership and trust" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
+              </div>
+              <div className="relative z-10 p-12 text-center text-primary-foreground">
+                <h2 className="text-3xl font-bold mb-4">Ready to Begin Your Recovery?</h2>
+                <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+                  Don't wait another day. Contact us now for a free consultation and take the first step 
+                  toward recovering your digital assets.
+                </p>
+                <Button variant="hero" size="lg" asChild>
+                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                    Start Free Consultation
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </section>
       </main>

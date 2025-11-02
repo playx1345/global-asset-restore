@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Shield, Zap, Globe } from "lucide-react";
+import indexCtaImage from "@/assets/index-cta-bg.jpg";
 
 const Index = () => {
   return (
@@ -42,8 +43,16 @@ const Index = () => {
       <Testimonials />
       
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative py-20 text-primary-foreground overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={indexCtaImage} 
+            alt="Security and protection" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-3xl mx-auto animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Don't Let Scammers Win
