@@ -119,7 +119,7 @@ const ServicesPage = () => {
                     </ul>
                     
                     <Button variant="default" asChild>
-                      <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                         Get Started
                       </a>
                     </Button>
@@ -149,7 +149,7 @@ const ServicesPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="action" size="lg" asChild>
-                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     Contact on WhatsApp
                   </a>
                 </Button>

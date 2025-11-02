@@ -62,7 +62,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="lg" asChild>
-                <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                   Contact Us on WhatsApp
                 </a>
               </Button>

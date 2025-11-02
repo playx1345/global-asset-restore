@@ -57,7 +57,7 @@ const Navigation = () => {
                   <Link to="/auth">Sign In</Link>
                 </Button>
                 <Button variant="action" asChild>
-                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     Start Recovery
                   </a>
                 </Button>
@@ -105,7 +105,7 @@ const Navigation = () => {
                   <Link to="/auth" onClick={() => setIsOpen(false)}>Sign In</Link>
                 </Button>
                 <Button variant="action" className="w-full" asChild>
-                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     Start Recovery
                   </a>
                 </Button>

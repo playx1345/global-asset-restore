@@ -179,7 +179,7 @@ const HowItWorks = () => {
                   toward recovering your digital assets.
                 </p>
                 <Button variant="hero" size="lg" asChild>
-                  <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     Start Free Consultation
                   </a>
                 </Button>

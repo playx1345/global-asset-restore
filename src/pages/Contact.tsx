@@ -25,7 +25,7 @@ const Contact = () => {
     const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}`;
     
     // Open WhatsApp
-    window.open(`https://wa.me/639933632857?text=${whatsappMessage}`, "_blank");
+    window.open(`https://wa.me/12495275672?text=${whatsappMessage}`, "_blank");
     
     toast({
       title: "Message sent!",
@@ -143,12 +143,12 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold mb-1">WhatsApp</h3>
                         <a 
-                          href="https://wa.me/639933632857" 
+                          href="https://wa.me/12495275672" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-accent hover:underline"
                         >
-                          +63 993 363 2857
+                          +1 (249) 527-5672
                         </a>
                         <p className="text-sm text-muted-foreground mt-1">
                           Fastest response time
@@ -209,7 +209,7 @@ const Contact = () => {
                     For urgent recovery needs, contact us immediately on WhatsApp
                   </p>
                   <Button variant="hero" asChild className="w-full bg-background/20 hover:bg-background/30">
-                    <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                       Contact Now
                     </a>
                   </Button>

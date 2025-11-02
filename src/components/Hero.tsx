@@ -41,7 +41,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Button variant="hero" size="lg" asChild className="text-lg px-8 py-6">
-              <a href="https://wa.me/639933632857" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                 Start Your Recovery
               </a>
             </Button>
