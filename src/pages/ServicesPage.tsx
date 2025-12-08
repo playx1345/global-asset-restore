@@ -2,11 +2,16 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Search, Shield, Users } from "lucide-react";
+import { CheckCircle2, Search, Shield, Users, FileSearch, Heart, TrendingUp, UserCheck, Mail } from "lucide-react";
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import serviceInvestigation from "@/assets/service-investigation.jpg";
 import serviceCompliance from "@/assets/service-compliance.jpg";
 import serviceManagement from "@/assets/service-management.jpg";
+import serviceForensics from "@/assets/service-forensics.jpg";
+import serviceRomanceScam from "@/assets/service-romance-scam.jpg";
+import serviceInvestmentFraud from "@/assets/service-investment-fraud.jpg";
+import serviceSocialRecovery from "@/assets/service-social-recovery.jpg";
+import servicePhishing from "@/assets/service-phishing.jpg";
 import servicesHeroImage from "@/assets/services-hero-bg.jpg";
 
 const services = [
@@ -32,6 +37,66 @@ const services = [
       "Fraudulent address identification",
       "Evidence gathering for legal proceedings",
       "Real-time monitoring and alerts",
+    ],
+  },
+  {
+    title: "Romance Scam Recovery",
+    description: "Compassionate support and recovery assistance for victims of romance and dating scams, helping you reclaim your funds and peace of mind.",
+    image: serviceRomanceScam,
+    icon: Heart,
+    features: [
+      "Scammer identification and profile tracing",
+      "Fund recovery investigation",
+      "Evidence documentation for law enforcement",
+      "Emotional support resources and guidance",
+    ],
+  },
+  {
+    title: "Investment Fraud Assistance",
+    description: "Specialized help for victims of fraudulent investment schemes, Ponzi schemes, and fake trading platforms.",
+    image: serviceInvestmentFraud,
+    icon: TrendingUp,
+    features: [
+      "Fake platform identification and investigation",
+      "Asset tracing and recovery strategies",
+      "Regulatory reporting assistance",
+      "Legal documentation support",
+    ],
+  },
+  {
+    title: "Digital Forensics Consulting",
+    description: "Expert analysis to help you understand security breaches, trace unauthorized access, and gather digital evidence for legal proceedings.",
+    image: serviceForensics,
+    icon: FileSearch,
+    features: [
+      "Security breach investigation and analysis",
+      "Digital evidence collection and preservation",
+      "Incident response and root cause analysis",
+      "Expert witness testimony for legal proceedings",
+    ],
+  },
+  {
+    title: "Social Media Account Recovery",
+    description: "Expert help recovering compromised or hacked social media and online accounts with enhanced security measures.",
+    image: serviceSocialRecovery,
+    icon: UserCheck,
+    features: [
+      "Account recovery procedures",
+      "Identity verification assistance",
+      "Security hardening recommendations",
+      "Prevention strategies for future attacks",
+    ],
+  },
+  {
+    title: "Phishing & Email Fraud Recovery",
+    description: "Comprehensive assistance for victims of phishing attacks, business email compromise, and email-based scams.",
+    image: servicePhishing,
+    icon: Mail,
+    features: [
+      "Phishing attack analysis",
+      "Compromised account recovery",
+      "Financial recovery investigation",
+      "Security awareness training",
     ],
   },
   {
@@ -80,7 +145,7 @@ const ServicesPage = () => {
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
               <p className="text-xl text-primary-foreground/90">
-                Comprehensive solutions for digital asset recovery and blockchain security
+                Comprehensive solutions for digital asset recovery, fraud investigation, and cybersecurity protection
               </p>
             </div>
           </div>

@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import serviceInvestigation from "@/assets/service-investigation.jpg";
-import serviceCompliance from "@/assets/service-compliance.jpg";
+import serviceRomanceScam from "@/assets/service-romance-scam.jpg";
+import serviceInvestmentFraud from "@/assets/service-investment-fraud.jpg";
+import serviceForensics from "@/assets/service-forensics.jpg";
 import serviceManagement from "@/assets/service-management.jpg";
 
 const services = [
@@ -18,13 +20,23 @@ const services = [
     image: serviceInvestigation,
   },
   {
-    title: "Compliance & Anti-Fraud",
-    description: "Expert clearance services and fraud prevention strategies to protect your digital assets and ensure regulatory compliance.",
-    image: serviceCompliance,
+    title: "Romance Scam Recovery",
+    description: "Compassionate support and recovery assistance for victims of romance and dating scams.",
+    image: serviceRomanceScam,
+  },
+  {
+    title: "Investment Fraud Assistance",
+    description: "Specialized help for victims of fraudulent investment schemes, Ponzi schemes, and fake trading platforms.",
+    image: serviceInvestmentFraud,
+  },
+  {
+    title: "Digital Forensics Consulting",
+    description: "Expert analysis to help you understand security breaches, trace unauthorized access, and gather digital evidence.",
+    image: serviceForensics,
   },
   {
     title: "Case Management",
-    description: "Personalized support from dedicated agents who guide you through every step of the recovery process with transparency.",
+    description: "Personalized support from dedicated agents who guide you through every step of the recovery process.",
     image: serviceManagement,
   },
 ];
@@ -36,11 +48,11 @@ const Services = () => {
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Comprehensive solutions for digital asset recovery and protection
+            Comprehensive solutions for digital asset recovery and fraud protection
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
             <Card 
               key={index} 
