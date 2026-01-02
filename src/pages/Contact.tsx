@@ -8,6 +8,17 @@ import { Label } from "@/components/ui/label";
 import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+// Validation schema for contact form
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be less than 200 characters"),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
   const { toast } = useToast();
@@ -17,12 +28,40 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Create WhatsApp message
-    const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${formData.name}%0AEmail: ${formData.email}%0ASubject: ${formData.subject}%0AMessage: ${formData.message}`;
+    // Validate form data with zod
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+      result.error.errors.forEach((error) => {
+        const field = error.path[0] as keyof ContactFormData;
+        fieldErrors[field] = error.message;
+      });
+      setErrors(fieldErrors);
+      toast({
+        title: "Validation Error",
+        description: "Please fix the errors in the form.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Clear errors on successful validation
+    setErrors({});
+    
+    // Properly encode each field for URL safety to prevent injection
+    const encodedName = encodeURIComponent(result.data.name);
+    const encodedEmail = encodeURIComponent(result.data.email);
+    const encodedSubject = encodeURIComponent(result.data.subject);
+    const encodedMessage = encodeURIComponent(result.data.message);
+    
+    // Create WhatsApp message with properly encoded form data
+    const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${encodedName}%0AEmail: ${encodedEmail}%0ASubject: ${encodedSubject}%0AMessage: ${encodedMessage}`;
     
     // Open WhatsApp
     window.open(`https://wa.me/12495275672?text=${whatsappMessage}`, "_blank");
@@ -36,7 +75,12 @@ const Contact = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear error when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors({ ...errors, [name]: undefined });
+    }
   };
 
   return (
@@ -71,10 +115,11 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      required
+                      maxLength={100}
                       placeholder="John Doe"
-                      className="mt-2"
+                      className={`mt-2 ${errors.name ? "border-destructive" : ""}`}
                     />
+                    {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
                   </div>
                   
                   <div>
@@ -85,10 +130,11 @@ const Contact = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      required
+                      maxLength={255}
                       placeholder="john@example.com"
-                      className="mt-2"
+                      className={`mt-2 ${errors.email ? "border-destructive" : ""}`}
                     />
+                    {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
                   </div>
                   
                   <div>
@@ -98,10 +144,11 @@ const Contact = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      required
+                      maxLength={200}
                       placeholder="Recovery Inquiry"
-                      className="mt-2"
+                      className={`mt-2 ${errors.subject ? "border-destructive" : ""}`}
                     />
+                    {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
                   </div>
                   
                   <div>
@@ -111,11 +158,12 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      required
+                      maxLength={2000}
                       placeholder="Tell us about your situation..."
                       rows={6}
-                      className="mt-2"
+                      className={`mt-2 ${errors.message ? "border-destructive" : ""}`}
                     />
+                    {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
                   </div>
                   
                   <Button type="submit" variant="action" size="lg" className="w-full">
