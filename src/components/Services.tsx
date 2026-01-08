@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import serviceRecovery from "@/assets/service-recovery.jpg";
-import serviceInvestigation from "@/assets/service-investigation.jpg";
-import serviceRomanceScam from "@/assets/service-romance-scam.jpg";
-import serviceInvestmentFraud from "@/assets/service-investment-fraud.jpg";
-import serviceForensics from "@/assets/service-forensics.jpg";
-import serviceManagement from "@/assets/service-management.jpg";
+import serviceWhatsapp from "@/assets/service-whatsapp.jpg";
+import serviceInstagram from "@/assets/service-instagram.jpg";
+import serviceFacebook from "@/assets/service-facebook.jpg";
+import serviceEmail from "@/assets/service-email.jpg";
+import serviceData from "@/assets/service-data.jpg";
 
 const services = [
   {
@@ -17,34 +17,34 @@ const services = [
     image: serviceRecovery,
   },
   {
-    title: "Blockchain Investigation",
+    title: "WhatsApp Account Recovery",
     description:
-      "Comprehensive tracing and analysis of blockchain transactions to identify fraud, track stolen funds, and gather evidence.",
-    image: serviceInvestigation,
+      "Expert assistance recovering hacked, suspended, or locked WhatsApp accounts with verification support.",
+    image: serviceWhatsapp,
   },
   {
-    title: "Romance Scam Recovery",
+    title: "Instagram Account Recovery",
     description:
-      "Compassionate support and recovery assistance for victims of romance and dating scams.",
-    image: serviceRomanceScam,
+      "Professional recovery of hacked, disabled, or impersonated Instagram accounts with security hardening.",
+    image: serviceInstagram,
   },
   {
-    title: "Investment Fraud Assistance",
+    title: "Facebook Account Recovery",
     description:
-      "Specialized help for victims of fraudulent investment schemes, Ponzi schemes, and fake trading platforms.",
-    image: serviceInvestmentFraud,
+      "Complete Facebook and Meta account recovery including business pages and ad accounts.",
+    image: serviceFacebook,
   },
   {
-    title: "Digital Forensics Consulting",
+    title: "Email Account Recovery",
     description:
-      "Expert analysis to help you understand security breaches, trace unauthorized access, and gather digital evidence.",
-    image: serviceForensics,
+      "Professional recovery of compromised email accounts across Gmail, Outlook, Yahoo, and other providers.",
+    image: serviceEmail,
   },
   {
-    title: "Case Management",
+    title: "Data Recovery Services",
     description:
-      "Personalized support from dedicated agents who guide you through every step of the recovery process.",
-    image: serviceManagement,
+      "Comprehensive digital data recovery from devices, cloud storage, and corrupted files.",
+    image: serviceData,
   },
 ];
 
@@ -63,7 +63,7 @@ const Services = () => {
             className="text-muted-foreground text-fluid-base max-w-2xl mx-auto opacity-0 animate-fade-in"
             style={{ animationDelay: "0.1s" }}
           >
-            Comprehensive solutions for digital asset recovery and fraud protection
+            Comprehensive solutions for digital asset recovery and account protection
           </p>
         </div>
 

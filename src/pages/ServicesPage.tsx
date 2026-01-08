@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Search, Shield, Users, FileSearch, Heart, TrendingUp, UserCheck, Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { CheckCircle2, Search, Shield, Users, FileSearch, Heart, TrendingUp, UserCheck, Mail, MessageCircle, ArrowRight, Copy, Camera, Facebook, HardDrive } from "lucide-react";
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import serviceInvestigation from "@/assets/service-investigation.jpg";
 import serviceCompliance from "@/assets/service-compliance.jpg";
@@ -13,6 +13,12 @@ import serviceInvestmentFraud from "@/assets/service-investment-fraud.jpg";
 import serviceSocialRecovery from "@/assets/service-social-recovery.jpg";
 import servicePhishing from "@/assets/service-phishing.jpg";
 import servicesHeroImage from "@/assets/services-hero-bg.jpg";
+import serviceWhatsapp from "@/assets/service-whatsapp.jpg";
+import serviceWhatsappClone from "@/assets/service-whatsapp-clone.jpg";
+import serviceInstagram from "@/assets/service-instagram.jpg";
+import serviceFacebook from "@/assets/service-facebook.jpg";
+import serviceEmail from "@/assets/service-email.jpg";
+import serviceData from "@/assets/service-data.jpg";
 
 const services = [
   {
@@ -25,6 +31,78 @@ const services = [
       "Exchange account recovery",
       "Smart contract fund retrieval",
       "Lost password and seed phrase recovery",
+    ],
+  },
+  {
+    title: "WhatsApp Account Recovery",
+    description: "Expert assistance recovering hacked, suspended, or locked WhatsApp accounts with verification support.",
+    image: serviceWhatsapp,
+    icon: MessageCircle,
+    features: [
+      "Account verification assistance",
+      "Two-factor authentication recovery",
+      "Business account recovery",
+      "Chat history restoration guidance",
+    ],
+  },
+  {
+    title: "WhatsApp Clone Detection & Recovery",
+    description: "Detect unauthorized WhatsApp clones and secure your account from SIM swap and cloning attacks.",
+    image: serviceWhatsappClone,
+    icon: Copy,
+    features: [
+      "Clone detection and removal",
+      "SIM swap fraud investigation",
+      "Device security audit",
+      "Prevention measures implementation",
+    ],
+  },
+  {
+    title: "Instagram Account Recovery",
+    description: "Professional recovery of hacked, disabled, or impersonated Instagram accounts.",
+    image: serviceInstagram,
+    icon: Camera,
+    features: [
+      "Hacked account recovery",
+      "Disabled account appeals",
+      "Impersonation report assistance",
+      "Security hardening setup",
+    ],
+  },
+  {
+    title: "Facebook Account Recovery",
+    description: "Complete Facebook and Meta account recovery including business pages and ad accounts.",
+    image: serviceFacebook,
+    icon: Facebook,
+    features: [
+      "Personal account recovery",
+      "Business page recovery",
+      "Ad account reinstatement",
+      "Identity verification support",
+    ],
+  },
+  {
+    title: "Email Account Recovery",
+    description: "Professional recovery of compromised email accounts across all major providers.",
+    image: serviceEmail,
+    icon: Mail,
+    features: [
+      "Gmail/Google account recovery",
+      "Microsoft/Outlook recovery",
+      "Yahoo and other providers",
+      "Password reset assistance",
+    ],
+  },
+  {
+    title: "Data Recovery Services",
+    description: "Comprehensive digital data recovery from devices, cloud storage, and corrupted files.",
+    image: serviceData,
+    icon: HardDrive,
+    features: [
+      "Cloud storage recovery",
+      "Device data recovery",
+      "Corrupted file restoration",
+      "Backup recovery assistance",
     ],
   },
   {
@@ -157,7 +235,7 @@ const ServicesPage = () => {
                 Our <span className="gradient-text-animated">Services</span>
               </h1>
               <p className="text-xl text-primary-foreground/90">
-                Comprehensive solutions for digital asset recovery, fraud investigation, and cybersecurity protection
+                Comprehensive solutions for digital asset recovery, account recovery, fraud investigation, and cybersecurity protection
               </p>
             </div>
           </div>
