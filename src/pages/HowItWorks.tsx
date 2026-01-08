@@ -69,7 +69,7 @@ const HowItWorks = () => {
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section className="relative text-primary-foreground py-20 overflow-hidden">
+        <section className="relative text-primary-foreground py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
               src={howItWorksHeroImage} 
@@ -77,10 +77,22 @@ const HowItWorks = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
+            {/* Animated mesh overlay */}
+            <div className="absolute inset-0 bg-mesh opacity-30" />
           </div>
+          
+          {/* Floating decorative elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-accent/20 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-10 right-20 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+          
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">How It Works</h1>
+              <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                Our Process
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                How It <span className="gradient-text-animated">Works</span>
+              </h1>
               <p className="text-xl text-primary-foreground/90">
                 Our proven 5-step process for successful digital asset recovery
               </p>
@@ -89,9 +101,9 @@ const HowItWorks = () => {
         </section>
 
         {/* Process Steps */}
-        <section className="py-20">
+        <section className="py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto space-y-12">
+            <div className="max-w-4xl mx-auto space-y-8">
               {steps.map((step, index) => (
                 <div 
                   key={index} 
@@ -100,18 +112,18 @@ const HowItWorks = () => {
                 >
                   {/* Connector Line */}
                   {index < steps.length - 1 && (
-                    <div className="hidden md:block absolute left-16 top-24 w-0.5 h-20 bg-accent/30" />
+                    <div className="hidden md:block absolute left-16 top-[8.5rem] w-0.5 h-16 bg-gradient-to-b from-accent to-accent/20" />
                   )}
                   
-                  <Card className="p-8 shadow-elegant hover:shadow-glow transition-shadow">
+                  <Card variant="interactive" className="p-6 md:p-8 group">
                     <div className="flex flex-col md:flex-row gap-6">
                       {/* Icon */}
                       <div className="flex-shrink-0">
                         <div className="relative">
-                          <div className="w-32 h-32 bg-gradient-accent rounded-full flex items-center justify-center">
-                            <step.icon className="h-12 w-12 text-accent-foreground" />
+                          <div className="w-28 h-28 md:w-32 md:h-32 bg-gradient-accent rounded-2xl flex items-center justify-center shadow-glow group-hover:scale-105 transition-transform duration-300">
+                            <step.icon className="h-10 w-10 md:h-12 md:w-12 text-accent-foreground" />
                           </div>
-                          <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg border-4 border-background">
+                          <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center font-bold text-lg border-4 border-background shadow-elegant">
                             {step.number}
                           </div>
                         </div>
@@ -119,8 +131,10 @@ const HowItWorks = () => {
                       
                       {/* Content */}
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                        <p className="text-muted-foreground text-lg mb-4">{step.description}</p>
+                        <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+                          {step.title}
+                        </h3>
+                        <p className="text-muted-foreground text-base md:text-lg mb-4">{step.description}</p>
                         <ul className="space-y-2">
                           {step.details.map((detail, dIndex) => (
                             <li key={dIndex} className="flex items-center gap-2 text-sm">
@@ -139,17 +153,26 @@ const HowItWorks = () => {
         </section>
 
         {/* Features */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Our Process?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-mesh opacity-10" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+                Why Choose Us
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold">Why Choose Our Process?</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto stagger-children">
               {features.map((feature, index) => (
                 <Card 
                   key={index} 
-                  className="p-8 text-center hover:shadow-elegant transition-shadow animate-scale-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  variant="elevated"
+                  className="p-8 text-center group"
                 >
-                  <div className="inline-flex p-4 bg-accent/10 rounded-full mb-4">
+                  <div className="inline-flex p-4 bg-accent/10 rounded-2xl mb-4 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
                     <feature.icon className="h-8 w-8 text-accent" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
@@ -161,9 +184,9 @@ const HowItWorks = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20">
+        <section className="py-20 md:py-28">
           <div className="container mx-auto px-4">
-            <div className="relative max-w-3xl mx-auto overflow-hidden rounded-lg shadow-elegant">
+            <div className="relative max-w-3xl mx-auto overflow-hidden rounded-2xl shadow-glow">
               <div className="absolute inset-0 z-0">
                 <img 
                   src={howItWorksCtaImage} 
@@ -171,15 +194,21 @@ const HowItWorks = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 shimmer opacity-20" />
               </div>
-              <div className="relative z-10 p-12 text-center text-primary-foreground">
-                <h2 className="text-3xl font-bold mb-4">Ready to Begin Your Recovery?</h2>
+              <div className="relative z-10 p-8 md:p-12 text-center text-primary-foreground">
+                <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                  Get Started Today
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Begin Your Recovery?</h2>
                 <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
                   Don't wait another day. Contact us now for a free consultation and take the first step 
                   toward recovering your digital assets.
                 </p>
-                <Button variant="hero" size="lg" asChild>
+                <Button variant="hero" size="lg" asChild className="group">
                   <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                     Start Free Consultation
                   </a>
                 </Button>

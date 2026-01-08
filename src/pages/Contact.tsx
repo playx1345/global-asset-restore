@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MessageCircle, Mail, Clock, MapPin } from "lucide-react";
+import { MessageCircle, Mail, Clock, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -83,16 +83,57 @@ const Contact = () => {
     }
   };
 
+  const contactMethods = [
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      value: "+1 (249) 527-5672",
+      href: "https://wa.me/12495275672",
+      subtitle: "Fastest response time",
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      value: "support@globaltechrecovery.com",
+      href: "mailto:support@globaltechrecovery.com",
+      subtitle: "We'll respond within 24 hours",
+    },
+    {
+      icon: Clock,
+      title: "Available",
+      value: "24/7 Support",
+      subtitle: "Always here when you need us",
+    },
+    {
+      icon: MapPin,
+      title: "Global Service",
+      value: "Worldwide Coverage",
+      subtitle: "Serving clients in 50+ countries",
+    },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-hero text-primary-foreground py-20">
-          <div className="container mx-auto px-4">
+        <section className="relative bg-gradient-hero text-primary-foreground py-24 md:py-32 overflow-hidden">
+          {/* Animated mesh overlay */}
+          <div className="absolute inset-0 bg-mesh opacity-30" />
+          
+          {/* Floating decorative elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-accent/20 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-10 right-20 w-40 h-40 bg-primary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+          
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+              <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                Get in Touch
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Contact <span className="gradient-text-animated">Us</span>
+              </h1>
               <p className="text-xl text-primary-foreground/90">
                 Get in touch with our team for a free consultation
               </p>
@@ -101,166 +142,148 @@ const Contact = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-20">
+        <section className="py-20 md:py-28">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
-              <Card className="p-8 shadow-elegant animate-fade-in">
-                <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      maxLength={100}
-                      placeholder="John Doe"
-                      className={`mt-2 ${errors.name ? "border-destructive" : ""}`}
-                    />
-                    {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
-                  </div>
+              <Card variant="gradient" className="p-8 animate-fade-in relative overflow-hidden">
+                {/* Decorative gradient */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                
+                <div className="relative z-10">
+                  <h2 className="text-2xl font-bold mb-2">Send Us a Message</h2>
+                  <p className="text-muted-foreground mb-6">Fill out the form and we'll get back to you shortly.</p>
                   
-                  <div>
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      maxLength={255}
-                      placeholder="john@example.com"
-                      className={`mt-2 ${errors.email ? "border-destructive" : ""}`}
-                    />
-                    {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      maxLength={200}
-                      placeholder="Recovery Inquiry"
-                      className={`mt-2 ${errors.subject ? "border-destructive" : ""}`}
-                    />
-                    {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      maxLength={2000}
-                      placeholder="Tell us about your situation..."
-                      rows={6}
-                      className={`mt-2 ${errors.message ? "border-destructive" : ""}`}
-                    />
-                    {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
-                  </div>
-                  
-                  <Button type="submit" variant="action" size="lg" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="group">
+                      <Label htmlFor="name" className="text-sm font-medium">Full Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        maxLength={100}
+                        placeholder="John Doe"
+                        className={`mt-2 transition-all duration-300 focus:shadow-glow ${errors.name ? "border-destructive" : ""}`}
+                      />
+                      {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
+                    </div>
+                    
+                    <div className="group">
+                      <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        maxLength={255}
+                        placeholder="john@example.com"
+                        className={`mt-2 transition-all duration-300 focus:shadow-glow ${errors.email ? "border-destructive" : ""}`}
+                      />
+                      {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
+                    </div>
+                    
+                    <div className="group">
+                      <Label htmlFor="subject" className="text-sm font-medium">Subject</Label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        maxLength={200}
+                        placeholder="Recovery Inquiry"
+                        className={`mt-2 transition-all duration-300 focus:shadow-glow ${errors.subject ? "border-destructive" : ""}`}
+                      />
+                      {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
+                    </div>
+                    
+                    <div className="group">
+                      <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        maxLength={2000}
+                        placeholder="Tell us about your situation..."
+                        rows={6}
+                        className={`mt-2 transition-all duration-300 focus:shadow-glow ${errors.message ? "border-destructive" : ""}`}
+                      />
+                      {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
+                    </div>
+                    
+                    <Button type="submit" variant="action" size="lg" className="w-full group">
+                      <Send className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      Send Message
+                    </Button>
+                  </form>
+                </div>
               </Card>
 
               {/* Contact Info */}
-              <div className="space-y-8 animate-slide-up">
+              <div className="space-y-8 stagger-children">
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-                  <p className="text-muted-foreground mb-8">
+                  <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+                    Contact Information
+                  </span>
+                  <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
+                  <p className="text-muted-foreground">
                     We're here to help 24/7. Reach out through any of these channels and our team 
                     will respond promptly to assist you with your recovery needs.
                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  <Card className="p-6 hover:shadow-elegant transition-shadow">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-accent/10 rounded-lg">
-                        <MessageCircle className="h-6 w-6 text-accent" />
+                <div className="space-y-4">
+                  {contactMethods.map((method, index) => (
+                    <Card 
+                      key={index} 
+                      variant="interactive" 
+                      className="p-5"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="p-3 bg-accent/10 rounded-xl group-hover:bg-accent/20 transition-colors">
+                          <method.icon className="h-6 w-6 text-accent" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold mb-1">{method.title}</h3>
+                          {method.href ? (
+                            <a 
+                              href={method.href} 
+                              target={method.href.startsWith("http") ? "_blank" : undefined}
+                              rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="text-accent hover:underline link-underline"
+                            >
+                              {method.value}
+                            </a>
+                          ) : (
+                            <p className="text-muted-foreground">{method.value}</p>
+                          )}
+                          <p className="text-sm text-muted-foreground mt-1">
+                            {method.subtitle}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">WhatsApp</h3>
-                        <a 
-                          href="https://wa.me/12495275672" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-accent hover:underline"
-                        >
-                          +1 (249) 527-5672
-                        </a>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          Fastest response time
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="p-6 hover:shadow-elegant transition-shadow">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-accent/10 rounded-lg">
-                        <Mail className="h-6 w-6 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Email</h3>
-                        <p className="text-accent">support@globaltechrecovery.com</p>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          We'll respond within 24 hours
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="p-6 hover:shadow-elegant transition-shadow">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-accent/10 rounded-lg">
-                        <Clock className="h-6 w-6 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Available</h3>
-                        <p className="text-muted-foreground">24/7 Support</p>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          Always here when you need us
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-
-                  <Card className="p-6 hover:shadow-elegant transition-shadow">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-accent/10 rounded-lg">
-                        <MapPin className="h-6 w-6 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Global Service</h3>
-                        <p className="text-muted-foreground">Worldwide Coverage</p>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          Serving clients in 50+ countries
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
+                    </Card>
+                  ))}
                 </div>
 
-                <Card className="p-6 bg-gradient-accent text-accent-foreground">
-                  <h3 className="font-bold text-lg mb-2">Emergency Case?</h3>
-                  <p className="mb-4 text-accent-foreground/90">
-                    For urgent recovery needs, contact us immediately on WhatsApp
-                  </p>
-                  <Button variant="hero" asChild className="w-full bg-background/20 hover:bg-background/30">
-                    <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
-                      Contact Now
-                    </a>
-                  </Button>
+                <Card className="p-6 bg-gradient-accent text-accent-foreground relative overflow-hidden">
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 shimmer opacity-30" />
+                  
+                  <div className="relative z-10">
+                    <h3 className="font-bold text-lg mb-2">Emergency Case?</h3>
+                    <p className="mb-4 text-accent-foreground/90">
+                      For urgent recovery needs, contact us immediately on WhatsApp
+                    </p>
+                    <Button variant="hero" asChild className="w-full bg-background/20 hover:bg-background/30">
+                      <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="mr-2 h-5 w-5" />
+                        Contact Now
+                      </a>
+                    </Button>
+                  </div>
                 </Card>
               </div>
             </div>
