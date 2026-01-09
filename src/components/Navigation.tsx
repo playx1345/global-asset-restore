@@ -50,23 +50,19 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-xl shadow-elegant border-b border-border/50"
+          ? "glass-strong shadow-glow border-b border-primary/10"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+          {/* Logo with Glow */}
           <Link
             to="/"
             className="flex items-center gap-2 font-bold text-lg lg:text-xl z-50 group"
           >
-            <Shield className="h-6 w-6 lg:h-7 lg:w-7 text-accent group-hover:scale-110 transition-transform duration-300" />
-            <span
-              className={`transition-colors duration-300 ${
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              }`}
-            >
+            <Shield className="h-6 w-6 lg:h-7 lg:w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
+            <span className="text-foreground group-hover:text-primary transition-colors duration-300">
               Global Tech Recovery
             </span>
           </Link>
@@ -77,19 +73,19 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/10 ${
+                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActive(item.path)
-                    ? "text-accent"
-                    : isScrolled
-                    ? "text-foreground hover:text-accent"
-                    : "text-primary-foreground/90 hover:text-primary-foreground"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-primary"
                 }`}
               >
                 {item.name}
-                {/* Animated underline */}
+                {/* Animated neon underline */}
                 <span
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-accent rounded-full transition-all duration-300 ${
-                    isActive(item.path) ? "w-1/2" : "w-0"
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
+                    isActive(item.path) 
+                      ? "w-1/2 bg-gradient-to-r from-primary to-neon-purple shadow-neon-cyan" 
+                      : "w-0 bg-primary"
                   }`}
                 />
               </Link>
@@ -103,7 +99,7 @@ const Navigation = () => {
                 <Button variant="outline" size="sm" asChild>
                   <Link to="/portal">Portal</Link>
                 </Button>
-                <Button variant="action" size="sm" onClick={() => signOut()}>
+                <Button variant="neon" size="sm" onClick={() => signOut()}>
                   Sign Out
                 </Button>
               </>
@@ -113,13 +109,11 @@ const Navigation = () => {
                   variant="ghost"
                   size="sm"
                   asChild
-                  className={
-                    isScrolled ? "" : "text-primary-foreground hover:text-primary-foreground"
-                  }
+                  className="text-muted-foreground hover:text-primary"
                 >
                   <Link to="/auth">Sign In</Link>
                 </Button>
-                <Button variant="action" size="sm" className="gap-2" asChild>
+                <Button variant="neon" size="sm" className="gap-2" asChild>
                   <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     <Phone className="h-4 w-4" />
                     Start Recovery
@@ -135,9 +129,7 @@ const Navigation = () => {
             className={`lg:hidden p-2 rounded-lg transition-colors z-50 ${
               isOpen
                 ? "text-foreground"
-                : isScrolled
-                ? "text-foreground hover:bg-accent/10"
-                : "text-primary-foreground hover:bg-white/10"
+                : "text-foreground hover:bg-primary/10"
             }`}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
@@ -160,11 +152,14 @@ const Navigation = () => {
 
       {/* Mobile Navigation Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 glass-strong backdrop-blur-2xl transition-all duration-500 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center justify-center min-h-screen px-6 py-20">
+        {/* Background mesh */}
+        <div className="absolute inset-0 bg-mesh opacity-50" />
+        
+        <div className="flex flex-col items-center justify-center min-h-screen px-6 py-20 relative z-10">
           {/* Mobile Nav Links */}
           <div className="flex flex-col items-center gap-2 w-full max-w-sm">
             {navItems.map((item, index) => (
@@ -174,8 +169,8 @@ const Navigation = () => {
                 onClick={() => setIsOpen(false)}
                 className={`w-full text-center py-4 text-lg font-medium rounded-xl transition-all duration-500 ${
                   isActive(item.path)
-                    ? "text-accent bg-accent/10"
-                    : "text-foreground hover:bg-accent/5 hover:text-accent"
+                    ? "text-primary bg-primary/10 shadow-glow"
+                    : "text-foreground hover:bg-primary/5 hover:text-primary"
                 }`}
                 style={{
                   transitionDelay: isOpen ? `${index * 75}ms` : "0ms",
@@ -206,7 +201,7 @@ const Navigation = () => {
                   </Link>
                 </Button>
                 <Button
-                  variant="action"
+                  variant="neon"
                   className="w-full"
                   size="lg"
                   onClick={() => {
@@ -224,7 +219,7 @@ const Navigation = () => {
                     Sign In
                   </Link>
                 </Button>
-                <Button variant="action" className="w-full gap-2" size="lg" asChild>
+                <Button variant="neon" className="w-full gap-2" size="lg" asChild>
                   <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     <Phone className="h-5 w-5" />
                     Start Recovery

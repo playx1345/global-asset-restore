@@ -51,13 +51,17 @@ const services = [
 const Services = () => {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute inset-0 bg-mesh opacity-30 pointer-events-none" />
+      {/* Blockchain grid background */}
+      <div className="absolute inset-0 blockchain-grid opacity-30 pointer-events-none" />
+      
+      {/* Gradient mesh overlay */}
+      <div className="absolute inset-0 bg-mesh opacity-50 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
           <h2 className="text-fluid-2xl font-bold mb-4 opacity-0 animate-fade-in">
-            Our Services
+            <span className="text-foreground">Our </span>
+            <span className="gradient-text">Services</span>
           </h2>
           <p
             className="text-muted-foreground text-fluid-base max-w-2xl mx-auto opacity-0 animate-fade-in"
@@ -71,7 +75,7 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              variant="interactive"
+              variant="crypto"
               className="overflow-hidden group opacity-0 animate-fade-up"
               style={{ animationDelay: `${index * 100 + 200}ms` }}
             >
@@ -79,13 +83,14 @@ const Services = () => {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
                 />
-                {/* Overlay gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Neon gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors duration-300">
+              <div className="p-6 relative">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground mb-4 line-clamp-3">
@@ -93,7 +98,7 @@ const Services = () => {
                 </p>
                 <Link
                   to="/services"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-accent opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
                 >
                   Learn More
                   <ArrowRight className="h-4 w-4" />
@@ -107,7 +112,7 @@ const Services = () => {
           className="text-center opacity-0 animate-fade-in"
           style={{ animationDelay: "0.8s" }}
         >
-          <Button variant="default" size="lg" asChild className="gap-2">
+          <Button variant="neon" size="lg" asChild className="gap-2">
             <Link to="/services">
               View All Services
               <ArrowRight className="h-4 w-4" />

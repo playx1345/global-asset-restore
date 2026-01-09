@@ -10,32 +10,35 @@ import indexCtaImage from "@/assets/index-cta-bg.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
 
       {/* Trust Metrics Section */}
       <section className="py-24 bg-background relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-mesh opacity-30 pointer-events-none" />
+        {/* Blockchain grid background */}
+        <div className="absolute inset-0 blockchain-grid opacity-20 pointer-events-none" />
+        
+        {/* Background mesh */}
+        <div className="absolute inset-0 bg-mesh opacity-40 pointer-events-none" />
 
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: Shield, title: "Trusted Worldwide", desc: "Serving clients in 50+ countries" },
-              { icon: Zap, title: "Fast Recovery", desc: "Average recovery time: 2-4 weeks" },
-              { icon: Globe, title: "All Blockchains", desc: "Support for 20+ major networks" },
+              { icon: Shield, title: "Trusted Worldwide", desc: "Serving clients in 50+ countries", color: "cyan" },
+              { icon: Zap, title: "Fast Recovery", desc: "Average recovery time: 2-4 weeks", color: "purple" },
+              { icon: Globe, title: "All Blockchains", desc: "Support for 20+ major networks", color: "green" },
             ].map((item, index) => (
               <Card
                 key={index}
-                variant="gradient"
+                variant="neon"
                 className="p-8 text-center group opacity-0 animate-scale-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="inline-flex p-4 bg-accent/10 rounded-2xl mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
-                  <item.icon className="h-8 w-8 text-accent" />
+                <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-5 group-hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
+                  <item.icon className="h-8 w-8 text-primary icon-glow" />
                 </div>
-                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <h3 className="font-bold text-lg mb-2 text-foreground">{item.title}</h3>
                 <p className="text-muted-foreground">{item.desc}</p>
               </Card>
             ))}
@@ -47,15 +50,32 @@ const Index = () => {
       <Testimonials />
 
       {/* Final CTA */}
-      <section className="relative py-24 text-primary-foreground overflow-hidden">
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={indexCtaImage}
             alt="Security and protection"
             className="w-full h-full object-cover scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-accent/70" />
-          <div className="absolute inset-0 bg-mesh opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/80" />
+        </div>
+        
+        {/* Blockchain grid overlay */}
+        <div className="absolute inset-0 z-[1] blockchain-grid opacity-30" />
+        
+        {/* Background mesh */}
+        <div className="absolute inset-0 z-[1] bg-mesh opacity-60" />
+        
+        {/* Floating orbs */}
+        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+          <div 
+            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[100px] animate-float-slow opacity-15"
+            style={{ background: "radial-gradient(circle, hsl(var(--neon-cyan)) 0%, transparent 70%)" }}
+          />
+          <div 
+            className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full blur-[80px] animate-float opacity-10"
+            style={{ background: "radial-gradient(circle, hsl(var(--neon-purple)) 0%, transparent 70%)", animationDelay: "-2s" }}
+          />
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -63,10 +83,11 @@ const Index = () => {
             <h2
               className="text-fluid-2xl font-bold mb-6 opacity-0 animate-fade-in"
             >
-              Don't Let Scammers Win
+              <span className="text-foreground">Don't Let </span>
+              <span className="gradient-text-animated">Scammers Win</span>
             </h2>
             <p
-              className="text-fluid-lg text-primary-foreground/90 mb-10 opacity-0 animate-fade-in"
+              className="text-fluid-lg text-muted-foreground mb-10 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
               Every minute counts. Start your recovery process today and take back what's yours.
@@ -75,13 +96,13 @@ const Index = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              <Button variant="hero" size="xl" asChild className="gap-2">
+              <Button variant="neon" size="xl" asChild className="gap-2">
                 <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                   Contact Us on WhatsApp
                   <ArrowRight className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="glass" size="xl" asChild>
+              <Button variant="cyber" size="xl" asChild>
                 <a href="/contact">Send Email</a>
               </Button>
             </div>

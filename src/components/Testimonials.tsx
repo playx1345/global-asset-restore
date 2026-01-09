@@ -52,14 +52,18 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-24 bg-muted/30 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-mesh opacity-20 pointer-events-none" />
+    <section className="py-24 bg-muted/20 relative overflow-hidden">
+      {/* Blockchain grid background */}
+      <div className="absolute inset-0 blockchain-grid opacity-20 pointer-events-none" />
+      
+      {/* Background mesh */}
+      <div className="absolute inset-0 bg-mesh opacity-40 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-12">
           <h2 className="text-fluid-2xl font-bold mb-4 opacity-0 animate-fade-in">
-            What Our Clients Say
+            <span className="text-foreground">What Our </span>
+            <span className="gradient-text">Clients Say</span>
           </h2>
           <p
             className="text-muted-foreground text-fluid-base max-w-2xl mx-auto opacity-0 animate-fade-in"
@@ -71,24 +75,29 @@ const Testimonials = () => {
 
         <div className="max-w-4xl mx-auto">
           <Card
-            variant="elevated"
-            className="p-8 md:p-12 border-accent/20 relative overflow-hidden opacity-0 animate-scale-in"
+            variant="neon"
+            className="p-8 md:p-12 relative overflow-hidden opacity-0 animate-scale-in"
             style={{ animationDelay: "0.2s" }}
           >
-            {/* Decorative quote mark */}
-            <Quote className="absolute top-6 left-6 h-16 w-16 text-accent/10" />
+            {/* Decorative quote mark with neon glow */}
+            <Quote className="absolute top-6 left-6 h-16 w-16 text-primary/10" />
+            
+            {/* Floating orb decoration */}
+            <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-3xl opacity-20"
+              style={{ background: "radial-gradient(circle, hsl(var(--neon-cyan)) 0%, transparent 70%)" }}
+            />
 
             <div
               className={`transition-all duration-300 ${
                 isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
               }`}
             >
-              {/* Star Rating */}
+              {/* Star Rating with glow */}
               <div className="flex gap-1 mb-6 justify-center">
                 {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="h-5 w-5 fill-accent text-accent"
+                    className="h-5 w-5 fill-primary text-primary icon-glow"
                     style={{
                       animationDelay: `${i * 100}ms`,
                     }}
@@ -103,35 +112,35 @@ const Testimonials = () => {
 
               {/* Author */}
               <div className="text-center">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-accent flex items-center justify-center">
-                  <span className="text-lg font-bold text-accent-foreground">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-r from-primary to-neon-purple flex items-center justify-center shadow-neon-cyan">
+                  <span className="text-lg font-bold text-primary-foreground">
                     {testimonials[currentIndex].name.charAt(0)}
                   </span>
                 </div>
-                <p className="font-semibold text-lg">{testimonials[currentIndex].name}</p>
+                <p className="font-semibold text-lg text-foreground">{testimonials[currentIndex].name}</p>
                 <p className="text-muted-foreground">{testimonials[currentIndex].role}</p>
               </div>
             </div>
 
-            {/* Progress bar */}
+            {/* Progress bar with gradient */}
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-muted">
               <div
                 key={currentIndex}
-                className="h-full bg-accent rounded-r-full animate-progress-fill"
+                className="h-full rounded-r-full progress-bar"
               />
             </div>
           </Card>
 
-          {/* Indicators */}
+          {/* Indicators with neon effect */}
           <div className="flex justify-center gap-3 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+                className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background ${
                   index === currentIndex
-                    ? "w-10 bg-accent shadow-glow"
-                    : "w-2.5 bg-secondary hover:bg-secondary/80"
+                    ? "w-10 bg-gradient-to-r from-primary to-neon-purple shadow-neon-cyan"
+                    : "w-2.5 bg-muted hover:bg-muted-foreground/50"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
