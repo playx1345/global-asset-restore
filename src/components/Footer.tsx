@@ -8,22 +8,25 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+    <footer className="relative bg-card text-foreground overflow-hidden border-t border-border">
       {/* Gradient decoration at top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
+      {/* Blockchain grid pattern */}
+      <div className="absolute inset-0 blockchain-grid opacity-10 pointer-events-none" />
+      
       {/* Background mesh */}
-      <div className="absolute inset-0 bg-mesh opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-mesh opacity-20 pointer-events-none" />
 
       <div className="container mx-auto px-4 py-16 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="inline-flex items-center gap-2 group">
-              <Shield className="h-7 w-7 text-accent group-hover:scale-110 transition-transform duration-300" />
+              <Shield className="h-7 w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
               <span className="font-bold text-xl">Global Tech Recovery</span>
             </Link>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               Professional digital asset recovery and blockchain investigation services.
               Trusted by clients worldwide.
             </p>
@@ -42,7 +45,7 @@ const Footer = () => {
                 <li key={item.path}>
                   <Link
                     to={item.path}
-                    className="text-primary-foreground/70 hover:text-accent transition-colors duration-300 link-underline"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 link-neon"
                   >
                     {item.name}
                   </Link>
@@ -54,7 +57,7 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h3 className="font-semibold mb-5 text-lg">Services</h3>
-            <ul className="space-y-3 text-sm text-primary-foreground/70">
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li>Digital Asset Recovery</li>
               <li>Blockchain Investigation</li>
               <li>Compliance & Anti-Fraud</li>
@@ -71,10 +74,10 @@ const Footer = () => {
                   href="https://wa.me/12495275672"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-primary-foreground/70 hover:text-accent transition-colors duration-300 group"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
                 >
-                  <div className="p-2 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
-                    <MessageCircle className="h-4 w-4 text-accent" />
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
+                    <MessageCircle className="h-4 w-4 text-primary" />
                   </div>
                   <span>+1 (249) 527-5672</span>
                 </a>
@@ -82,10 +85,10 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="flex items-center gap-3 text-primary-foreground/70 hover:text-accent transition-colors duration-300 group"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
                 >
-                  <div className="p-2 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
-                    <Mail className="h-4 w-4 text-accent" />
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
+                    <Mail className="h-4 w-4 text-primary" />
                   </div>
                   <span>Send us a message</span>
                 </Link>
@@ -95,8 +98,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-primary-foreground/50">
+        <div className="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Global Tech Recovery. All rights reserved.
           </p>
 
@@ -105,7 +108,7 @@ const Footer = () => {
             variant="ghost"
             size="sm"
             onClick={scrollToTop}
-            className="text-primary-foreground/70 hover:text-accent hover:bg-accent/10 gap-2"
+            className="text-muted-foreground hover:text-primary hover:bg-primary/10 gap-2"
           >
             <ArrowUp className="h-4 w-4" />
             Back to top

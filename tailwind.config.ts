@@ -57,6 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Crypto-specific neon colors
+        neon: {
+          cyan: "hsl(var(--neon-cyan))",
+          purple: "hsl(var(--neon-purple))",
+          green: "hsl(var(--neon-green))",
+          pink: "hsl(var(--neon-pink))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,12 +76,17 @@ export default {
         "gradient-mesh": "var(--gradient-mesh)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-neon": "linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 100%)",
+        "gradient-neon-vertical": "linear-gradient(180deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-purple)) 100%)",
       },
       boxShadow: {
         elegant: "var(--shadow-elegant)",
         glow: "var(--shadow-glow)",
         card: "var(--shadow-card)",
         "card-hover": "var(--shadow-card-hover)",
+        "neon-cyan": "var(--shadow-neon-cyan)",
+        "neon-purple": "var(--shadow-neon-purple)",
+        "neon-green": "var(--shadow-neon-green)",
       },
       transitionProperty: {
         smooth: "var(--transition-smooth)",
@@ -121,12 +133,16 @@ export default {
           "100%": { transform: "translateX(100%)" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-20px) rotate(2deg)" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "1", boxShadow: "0 0 20px hsl(var(--accent) / 0.3)" },
-          "50%": { opacity: "0.8", boxShadow: "0 0 40px hsl(var(--accent) / 0.5)" },
+          "0%, 100%": { opacity: "1", boxShadow: "0 0 20px hsl(var(--neon-cyan) / 0.3)" },
+          "50%": { opacity: "0.8", boxShadow: "0 0 40px hsl(var(--neon-cyan) / 0.5), 0 0 60px hsl(var(--neon-purple) / 0.3)" },
+        },
+        "neon-pulse": {
+          "0%, 100%": { boxShadow: "0 0 5px hsl(var(--neon-cyan) / 0.5), 0 0 20px hsl(var(--neon-cyan) / 0.3), 0 0 40px hsl(var(--neon-cyan) / 0.2)" },
+          "50%": { boxShadow: "0 0 10px hsl(var(--neon-cyan) / 0.8), 0 0 30px hsl(var(--neon-cyan) / 0.5), 0 0 60px hsl(var(--neon-cyan) / 0.3)" },
         },
         "gradient-flow": {
           "0%": { backgroundPosition: "0% 50%" },
@@ -145,6 +161,27 @@ export default {
           "0%, 100%": { opacity: "1", transform: "translateY(0)" },
           "50%": { opacity: "0.5", transform: "translateY(8px)" },
         },
+        "reveal-up": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "border-flow": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { filter: "drop-shadow(0 0 10px hsl(var(--neon-cyan) / 0.5))" },
+          "50%": { filter: "drop-shadow(0 0 25px hsl(var(--neon-cyan) / 0.8))" },
+        },
+        "scale-bounce": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+        orbit: {
+          "0%": { transform: "rotate(0deg) translateX(100px) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(100px) rotate(-360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -155,13 +192,21 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out forwards",
         "scale-in": "scale-in 0.4s ease-out forwards",
         "scale-fade-in": "scale-fade-in 0.5s ease-out forwards",
-        shimmer: "shimmer 2.5s infinite",
+        shimmer: "shimmer 2s infinite",
         float: "float 6s ease-in-out infinite",
+        "float-slow": "float 8s ease-in-out infinite",
+        "float-fast": "float 4s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "neon-pulse": "neon-pulse 2s ease-in-out infinite",
         "gradient-flow": "gradient-flow 3s ease infinite",
         "spin-slow": "spin-slow 20s linear infinite",
         "progress-fill": "progress-fill 5s linear infinite",
         "scroll-indicator": "scroll-indicator 2s ease-in-out infinite",
+        "reveal-up": "reveal-up 0.6s ease-out forwards",
+        "border-flow": "border-flow 3s ease infinite",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "scale-bounce": "scale-bounce 2s ease-in-out infinite",
+        orbit: "orbit 20s linear infinite",
       },
     },
   },
