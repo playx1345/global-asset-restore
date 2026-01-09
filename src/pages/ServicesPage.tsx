@@ -2,7 +2,48 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Search, Shield, Users, FileSearch, Heart, TrendingUp, UserCheck, Mail, MessageCircle, ArrowRight, Copy, Camera, Facebook, HardDrive } from "lucide-react";
+import { CheckCircle2, Search, Shield, Users, FileSearch, Heart, TrendingUp, UserCheck, Mail, MessageCircle, ArrowRight, Copy, Camera, Facebook, HardDrive, HelpCircle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqs = [
+  {
+    question: "How long does the recovery process typically take?",
+    answer: "Recovery timelines vary depending on the complexity of your case. Simple account recoveries can take 24-72 hours, while more complex cases involving blockchain investigation or legal proceedings may take 2-4 weeks. During your initial consultation, we'll provide a realistic timeline based on your specific situation."
+  },
+  {
+    question: "What is your success rate for digital asset recovery?",
+    answer: "Our overall success rate exceeds 85% for cases we accept. We conduct a thorough preliminary assessment before taking on any case, and we only proceed when we believe there's a reasonable chance of recovery. For cryptocurrency recovery specifically, our success rate is around 78%, while account recovery services have a success rate above 92%."
+  },
+  {
+    question: "What information do I need to provide to start a case?",
+    answer: "To begin, we'll need basic details about your situation including: account details or wallet addresses involved, timeline of events, any communication with the platform or scammers, transaction records or screenshots, and any relevant documentation. The more information you can provide, the better we can assess and handle your case."
+  },
+  {
+    question: "How do you protect my personal information during the investigation?",
+    answer: "We take data security extremely seriously. All client information is encrypted using industry-standard protocols. We operate under strict confidentiality agreements, and your data is only accessed by authorized team members working on your case. We never share client information with third parties without explicit consent."
+  },
+  {
+    question: "What are your fees and payment structure?",
+    answer: "We offer transparent pricing based on the type and complexity of your case. Initial consultations are free. For most recovery cases, we work on a success-based fee structure, meaning you only pay when we successfully recover your assets. Upfront fees may apply for investigation-only services. We'll provide a clear fee breakdown before starting any work."
+  },
+  {
+    question: "Can you guarantee recovery of my stolen funds?",
+    answer: "While we have a high success rate, we cannot guarantee recovery in every case. The outcome depends on factors like how quickly you report the incident, the nature of the fraud, and available digital trails. We're honest about the likelihood of success during our assessment and only take cases where we see a viable path to recovery."
+  },
+  {
+    question: "Do you work with law enforcement agencies?",
+    answer: "Yes, we regularly collaborate with law enforcement agencies worldwide. We can help you file reports, provide evidence documentation in formats suitable for legal proceedings, and coordinate with authorities when necessary. Our team includes professionals with experience in legal and regulatory compliance."
+  },
+  {
+    question: "What types of scams and fraud do you handle?",
+    answer: "We handle a wide range of digital fraud cases including cryptocurrency scams, romance scams, investment fraud, phishing attacks, business email compromise, account takeovers, and identity theft. If you're unsure whether your situation falls within our expertise, contact us for a free assessment."
+  },
+];
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import serviceInvestigation from "@/assets/service-investigation.jpg";
 import serviceCompliance from "@/assets/service-compliance.jpg";
@@ -305,7 +346,55 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* FAQ Section */}
+        <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-mesh opacity-5" />
+          <div className="absolute top-20 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-12 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 rounded-full text-sm font-medium text-accent mb-6">
+                <HelpCircle className="h-4 w-4" />
+                Common Questions
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Frequently Asked <span className="gradient-text-animated">Questions</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Get answers to common questions about our recovery processes, timelines, and success rates
+              </p>
+            </div>
+
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <AccordionItem 
+                    key={index} 
+                    value={`item-${index}`}
+                    className="bg-card border border-border/50 rounded-xl px-6 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <AccordionTrigger className="text-left font-semibold py-5 hover:no-underline hover:text-accent transition-colors [&[data-state=open]]:text-accent">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-muted-foreground mb-4">Still have questions?</p>
+              <Button variant="outline" asChild className="hover-lift">
+                <a href="/contact">Contact Our Team</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-mesh opacity-10" />
