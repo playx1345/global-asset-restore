@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Shield, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,6 +96,7 @@ const Navigation = () => {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             {user ? (
               <>
                 <Button variant="outline" size="sm" asChild>
@@ -124,30 +126,33 @@ const Navigation = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors z-50 ${
-              isOpen
-                ? "text-foreground"
-                : "text-foreground hover:bg-primary/10"
-            }`}
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-          >
-            <div className="relative w-6 h-6">
-              <Menu
-                className={`h-6 w-6 absolute inset-0 transition-all duration-300 ${
-                  isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-                }`}
-              />
-              <X
-                className={`h-6 w-6 absolute inset-0 transition-all duration-300 ${
-                  isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                }`}
-              />
-            </div>
-          </button>
+          {/* Mobile Actions */}
+          <div className="lg:hidden flex items-center gap-2 z-50">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-2 rounded-lg transition-colors ${
+                isOpen
+                  ? "text-foreground"
+                  : "text-foreground hover:bg-primary/10"
+              }`}
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+            >
+              <div className="relative w-6 h-6">
+                <Menu
+                  className={`h-6 w-6 absolute inset-0 transition-all duration-300 ${
+                    isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                  }`}
+                />
+                <X
+                  className={`h-6 w-6 absolute inset-0 transition-all duration-300 ${
+                    isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
