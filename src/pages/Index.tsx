@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -73,6 +74,7 @@ const Index = () => {
 
       <Services />
       <Testimonials />
+      <FAQ />
 
       {/* Final CTA */}
       <section className="relative py-24 overflow-hidden">
