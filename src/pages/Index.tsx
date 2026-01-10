@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Shield, Zap, Globe, ArrowRight } from "lucide-react";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import indexCtaImage from "@/assets/index-cta-bg.jpg";
 
 const Index = () => {
@@ -25,9 +26,30 @@ const Index = () => {
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
-              { icon: Shield, title: "Trusted Worldwide", desc: "Serving clients in 50+ countries", color: "cyan" },
-              { icon: Zap, title: "Fast Recovery", desc: "Average recovery time: 2-4 weeks", color: "purple" },
-              { icon: Globe, title: "All Blockchains", desc: "Support for 20+ major networks", color: "green" },
+              { 
+                icon: Shield, 
+                title: "Trusted Worldwide", 
+                number: 50, 
+                suffix: "+", 
+                label: "countries served",
+                color: "cyan" 
+              },
+              { 
+                icon: Zap, 
+                title: "Fast Recovery", 
+                number: 2, 
+                suffix: "-4 weeks", 
+                label: "average recovery time",
+                color: "purple" 
+              },
+              { 
+                icon: Globe, 
+                title: "All Blockchains", 
+                number: 20, 
+                suffix: "+", 
+                label: "major networks supported",
+                color: "green" 
+              },
             ].map((item, index) => (
               <Card
                 key={index}
@@ -38,8 +60,11 @@ const Index = () => {
                 <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-5 group-hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
                   <item.icon className="h-8 w-8 text-primary icon-glow" />
                 </div>
-                <h3 className="font-bold text-lg mb-2 text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground">{item.desc}</p>
+                <h3 className="font-bold text-lg mb-3 text-foreground">{item.title}</h3>
+                <div className="text-4xl font-bold gradient-text mb-2">
+                  <AnimatedCounter end={item.number} suffix={item.suffix} duration={2000} />
+                </div>
+                <p className="text-muted-foreground text-sm">{item.label}</p>
               </Card>
             ))}
           </div>
