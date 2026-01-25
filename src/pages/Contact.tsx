@@ -64,7 +64,7 @@ const Contact = () => {
     const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${encodedName}%0AEmail: ${encodedEmail}%0ASubject: ${encodedSubject}%0AMessage: ${encodedMessage}`;
     
     // Open WhatsApp
-    window.open(`https://wa.me/12495275672?text=${whatsappMessage}`, "_blank");
+    window.open(`https://wa.me/12344528385?text=${whatsappMessage}`, "_blank");
     
     toast({
       title: "Message sent!",
@@ -87,15 +87,15 @@ const Contact = () => {
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      value: "+1 (249) 527-5672",
-      href: "https://wa.me/12495275672",
+      value: "+1 (234) 452-8385",
+      href: "https://wa.me/12344528385",
       subtitle: "Fastest response time",
     },
     {
       icon: Mail,
       title: "Email",
-      value: "support@globaltechrecovery.com",
-      href: "mailto:support@globaltechrecovery.com",
+      value: "alexdesmond067@gmail.com",
+      href: "mailto:alexdesmond067@gmail.com",
       subtitle: "We'll respond within 24 hours",
     },
     {
@@ -278,7 +278,7 @@ const Contact = () => {
                       For urgent recovery needs, contact us immediately on WhatsApp
                     </p>
                     <Button variant="hero" asChild className="w-full bg-background/20 hover:bg-background/30">
-                      <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/12344528385" target="_blank" rel="noopener noreferrer">
                         <MessageCircle className="mr-2 h-5 w-5" />
                         Contact Now
                       </a>
