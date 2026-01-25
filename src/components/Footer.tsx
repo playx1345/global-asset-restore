@@ -71,7 +71,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm">
               <li>
                 <a
-                  href="https://wa.me/12495275672"
+                  href="https://wa.me/12344528385"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
@@ -79,7 +79,7 @@ const Footer = () => {
                   <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
                     <MessageCircle className="h-4 w-4 text-primary" />
                   </div>
-                  <span>+1 (249) 527-5672</span>
+                  <span>+1 (234) 452-8385</span>
                 </a>
               </li>
               <li>
