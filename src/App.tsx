@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/hooks/useAuth";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ScrollToTop from "@/components/ScrollToTop";
 import AnimatedRoutes from "@/components/AnimatedRoutes";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ const App = () => (
         <BrowserRouter>
           <AuthProvider>
             <AnimatedRoutes />
+            <ScrollToTop />
             <FloatingWhatsApp />
           </AuthProvider>
         </BrowserRouter>

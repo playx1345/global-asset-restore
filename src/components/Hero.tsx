@@ -96,7 +96,7 @@ const Hero = () => {
             style={{ animationDelay: "0.4s" }}
           >
             <Button variant="neon" size="xl" asChild>
-              <a href="https://wa.me/12344528385" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                 Start Your Recovery
               </a>
             </Button>

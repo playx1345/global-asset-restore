@@ -207,7 +207,7 @@ const HowItWorks = () => {
                   toward recovering your digital assets.
                 </p>
                 <Button variant="hero" size="lg" asChild className="group">
-                  <a href="https://wa.me/12344528385" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                     Start Free Consultation
                   </a>
