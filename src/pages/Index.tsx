@@ -124,7 +124,7 @@ const Index = () => {
               style={{ animationDelay: "0.2s" }}
             >
               <Button variant="neon" size="xl" asChild className="gap-2">
-                <a href="https://wa.me/12344528385" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                   Contact Us on WhatsApp
                   <ArrowRight className="h-5 w-5" />
                 </a>

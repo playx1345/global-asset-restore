@@ -70,7 +70,7 @@ const FloatingWhatsApp = () => {
           </div>
 
           <a
-            href="https://wa.me/12344528385?text=Hi%2C%20I%20need%20help%20with%20account%20recovery"
+            href="https://wa.me/12495275672?text=Hi%2C%20I%20need%20help%20with%20account%20recovery"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BD5A] hover:to-[#0FA87B] text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 shadow-neon-green hover:shadow-[0_0_30px_hsl(160_100%_45%/0.5)]"
