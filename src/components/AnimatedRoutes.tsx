@@ -10,6 +10,7 @@ import Contact from "@/pages/Contact";
 import Auth from "@/pages/Auth";
 import Portal from "@/pages/Portal";
 import SuccessStories from "@/pages/SuccessStories";
+import Privacy from "@/pages/Privacy";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -25,6 +26,7 @@ const AnimatedRoutes = () => {
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
         <Route path="/success-stories" element={<PageTransition><SuccessStories /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
         <Route path="/portal" element={<ProtectedRoute><PageTransition><Portal /></PageTransition></ProtectedRoute>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
