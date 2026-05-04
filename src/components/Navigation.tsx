@@ -61,9 +61,9 @@ const Navigation = () => {
           {/* Logo with Glow */}
           <Link
             to="/"
-            className="flex items-center gap-2 font-bold text-lg lg:text-xl z-50 group"
+            className="flex items-center gap-2 font-bold text-base sm:text-lg lg:text-xl z-50 group tracking-wider"
           >
-            <Shield className="h-6 w-6 lg:h-7 lg:w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
+            <Shield className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
             <span className="text-foreground group-hover:text-primary transition-colors duration-300">
               NOXSHADE
             </span>

@@ -58,15 +58,15 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10 py-32">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 py-20 sm:py-28 md:py-32">
+        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
           {/* Trust Badge with Glow */}
           <div
-            className="inline-flex items-center gap-2 glass-crypto px-5 py-2.5 rounded-full shadow-glow opacity-0 animate-fade-in"
+            className="inline-flex items-center gap-2 glass-crypto px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-glow opacity-0 animate-fade-in"
             style={{ animationDelay: "0.1s" }}
           >
-            <Sparkles className="h-4 w-4 text-primary animate-glow-pulse" />
-            <span className="text-sm font-medium text-foreground">
+            <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary animate-glow-pulse" />
+            <span className="text-xs sm:text-sm font-medium text-foreground">
               Trusted by clients worldwide
             </span>
           </div>
@@ -92,22 +92,22 @@ const Hero = () => {
 
           {/* CTA Buttons with Neon Effects */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 opacity-0 animate-fade-in"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 px-4 sm:px-0 opacity-0 animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
-            <Button variant="neon" size="xl" asChild>
+            <Button variant="neon" size="xl" asChild className="w-full sm:w-auto">
               <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
                 Start Your Recovery
               </a>
             </Button>
-            <Button variant="glass" size="xl" asChild>
+            <Button variant="glass" size="xl" asChild className="w-full sm:w-auto">
               <Link to="/how-it-works">How It Works</Link>
             </Button>
           </div>
 
           {/* Trust Indicators with Neon Glow */}
           <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-12 max-w-3xl mx-auto opacity-0 animate-fade-in"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-8 sm:pt-12 max-w-3xl mx-auto opacity-0 animate-fade-in"
             style={{ animationDelay: "0.5s" }}
           >
             {[
@@ -117,10 +117,10 @@ const Hero = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className="group flex items-center justify-center gap-3 p-4 glass-crypto rounded-xl border-primary/20 hover:border-primary/40 hover:shadow-glow transition-all duration-500 tilt-3d"
+                className="group flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 glass-crypto rounded-xl border-primary/20 hover:border-primary/40 hover:shadow-glow transition-all duration-500 tilt-3d"
               >
-                <item.icon className="h-5 w-5 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
-                <span className="text-foreground font-medium">{item.label}</span>
+                <item.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:scale-110 transition-all duration-300 icon-glow shrink-0" />
+                <span className="text-foreground text-sm sm:text-base font-medium">{item.label}</span>
               </div>
             ))}
           </div>
