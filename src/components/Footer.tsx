@@ -18,13 +18,13 @@ const Footer = () => {
       {/* Background mesh */}
       <div className="absolute inset-0 bg-mesh opacity-20 pointer-events-none" />
 
-      <div className="container mx-auto px-4 py-16 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="inline-flex items-center gap-2 group">
               <Shield className="h-7 w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
-              <span className="font-bold text-xl">Global Tech Recovery</span>
+              <span className="font-bold text-xl">NOXSHADE</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Professional digital asset recovery and blockchain investigation services.
@@ -98,9 +98,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Global Tech Recovery. All rights reserved.
+        <div className="border-t border-border pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            © {new Date().getFullYear()} NOXSHADE. All rights reserved.
           </p>
 
           {/* Back to top button */}

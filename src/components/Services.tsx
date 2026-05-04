@@ -50,15 +50,15 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 bg-background relative overflow-hidden">
       {/* Blockchain grid background */}
       <div className="absolute inset-0 blockchain-grid opacity-30 pointer-events-none" />
       
       {/* Gradient mesh overlay */}
       <div className="absolute inset-0 bg-mesh opacity-50 pointer-events-none" />
 
-      <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 sm:px-6 relative">
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <h2 className="text-fluid-2xl font-bold mb-4 opacity-0 animate-fade-in">
             <span className="text-foreground">Our </span>
             <span className="gradient-text">Services</span>
@@ -71,7 +71,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12">
           {services.map((service, index) => (
             <Card
               key={index}
@@ -89,16 +89,16 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="p-6 relative">
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+              <div className="p-5 sm:p-6 relative">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 line-clamp-3">
+                <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 line-clamp-3">
                   {service.description}
                 </p>
                 <Link
                   to="/services"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300"
                 >
                   Learn More
                   <ArrowRight className="h-4 w-4" />

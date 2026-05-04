@@ -64,7 +64,7 @@ export default function Auth() {
           <Link to="/" className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-accent" />
             <span className="font-bold text-2xl bg-gradient-hero bg-clip-text text-transparent">
-              Global Tech Recovery
+              NOXSHADE
             </span>
           </Link>
         </div>

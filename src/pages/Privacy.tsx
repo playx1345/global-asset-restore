@@ -116,7 +116,7 @@ const Privacy = () => {
               <Card variant="gradient" className="p-8">
                 <h2 className="text-2xl font-bold mb-4">Our Commitment to Privacy</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  At Global Tech Recovery, we are committed to protecting your privacy and ensuring 
+                  At NOXSHADE, we are committed to protecting your privacy and ensuring 
                   the security of your personal information. This Privacy Policy explains how we collect, 
                   use, disclose, and safeguard your information when you visit our website or use our services.
                 </p>

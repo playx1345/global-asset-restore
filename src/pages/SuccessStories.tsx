@@ -37,7 +37,7 @@ const caseStudies = [
       { phase: "Legal Coordination", days: 18 },
       { phase: "Asset Recovery", days: 7 }
     ],
-    testimonial: "I thought I'd never see my money again. Global Tech Recovery gave me hope when no one else could help.",
+    testimonial: "I thought I'd never see my money again. NOXSHADE gave me hope when no one else could help.",
     image: "romance"
   },
   {
@@ -79,7 +79,7 @@ const caseStudies = [
       { phase: "Protocol Coordination", days: 12 },
       { phase: "Recovery Execution", days: 7 }
     ],
-    testimonial: "We contacted Global Tech Recovery within hours of the theft. Their rapid response was crucial to getting our crypto back.",
+    testimonial: "We contacted NOXSHADE within hours of the theft. Their rapid response was crucial to getting our crypto back.",
     image: "phishing"
   },
   {
@@ -100,7 +100,7 @@ const caseStudies = [
       { phase: "Legal Proceedings", days: 28 },
       { phase: "Asset Distribution", days: 12 }
     ],
-    testimonial: "Global Tech Recovery's expertise in corporate-level crypto recovery was invaluable. They navigated complex legal frameworks across multiple jurisdictions.",
+    testimonial: "NOXSHADE's expertise in corporate-level crypto recovery was invaluable. They navigated complex legal frameworks across multiple jurisdictions.",
     image: "exchange"
   }
 ];
