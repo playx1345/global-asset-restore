@@ -65,7 +65,7 @@ const Navigation = () => {
           >
             <Shield className="h-6 w-6 lg:h-7 lg:w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
             <span className="text-foreground group-hover:text-primary transition-colors duration-300">
-              Global Tech Recovery
+              NOXSHADE
             </span>
           </Link>
 

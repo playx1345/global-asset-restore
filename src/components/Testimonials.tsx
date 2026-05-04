@@ -9,7 +9,7 @@ const testimonials = [
     name: "Sarah Chen",
     role: "Cryptocurrency Investor",
     content:
-      "I thought my Bitcoin was gone forever after a wallet hack. Global Tech Recovery traced and recovered 95% of my funds. Their professionalism and expertise gave me hope when I had none.",
+      "I thought my Bitcoin was gone forever after a wallet hack. NOXSHADE traced and recovered 95% of my funds. Their professionalism and expertise gave me hope when I had none.",
     rating: 5,
   },
   {
@@ -30,7 +30,7 @@ const testimonials = [
     name: "James Thompson",
     role: "Day Trader",
     content:
-      "Lost access to my exchange account with significant funds inside. Global Tech Recovery helped navigate the recovery process and I got everything back within 3 weeks. Incredible service!",
+      "Lost access to my exchange account with significant funds inside. NOXSHADE helped navigate the recovery process and I got everything back within 3 weeks. Incredible service!",
     rating: 5,
   },
   {

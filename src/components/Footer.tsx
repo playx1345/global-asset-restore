@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="inline-flex items-center gap-2 group">
               <Shield className="h-7 w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
-              <span className="font-bold text-xl">Global Tech Recovery</span>
+              <span className="font-bold text-xl">NOXSHADE</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Professional digital asset recovery and blockchain investigation services.
@@ -100,7 +100,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Global Tech Recovery. All rights reserved.
+            © {new Date().getFullYear()} NOXSHADE. All rights reserved.
           </p>
 
           {/* Back to top button */}
