@@ -225,7 +225,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                   <label className="text-sm font-medium">Priority</label>
                   <Select
                     value={caseData.priority}
-                    onValueChange={(value) => updateCase('priority', value)}
+                    onValueChange={(value) => updateCase({ priority: value as 'low' | 'medium' | 'high' | 'urgent' })}
                     disabled={updating}
                   >
                     <SelectTrigger>
