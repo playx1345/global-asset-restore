@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -245,8 +246,32 @@ const services = [
 ];
 
 const ServicesPage = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Digital Asset Recovery",
+    provider: { "@type": "Organization", name: "NOXSHADE" },
+    areaServed: "Worldwide",
+    description: "Cryptocurrency recovery, blockchain investigation, account recovery, and digital fraud forensics.",
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Recovery Services | NOXSHADE Digital Asset Recovery"
+        description="Explore NOXSHADE's digital asset recovery services: crypto recovery, blockchain investigation, account recovery, and fraud forensics."
+        path="/services"
+        jsonLd={[faqSchema, serviceSchema]}
+      />
       <Navigation />
       
       <main className="flex-1 pt-16">
