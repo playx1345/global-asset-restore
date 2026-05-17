@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import serviceWhatsapp from "@/assets/service-whatsapp.jpg";
 import serviceInstagram from "@/assets/service-instagram.jpg";
