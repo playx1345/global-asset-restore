@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
 import { Shield } from 'lucide-react';
 import { Link, Navigate } from 'react-router-dom';
+import SEO from '@/components/SEO';
 
 const signInSchema = z.object({
   email: z.string().trim().email({ message: 'Invalid email address' }).max(255),
