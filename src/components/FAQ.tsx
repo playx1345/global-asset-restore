@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle, Shield, Clock, DollarSign, Lock, Users } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const faqs = [
   {
@@ -46,7 +47,21 @@ const faqs = [
 ];
 
 const FAQ = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   return (
+    <>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Blockchain grid background */}
       <div className="absolute inset-0 blockchain-grid opacity-20 pointer-events-none" />
