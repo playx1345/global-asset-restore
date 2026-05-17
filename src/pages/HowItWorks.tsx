@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -65,6 +66,11 @@ const features = [
 const HowItWorks = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="How It Works | NOXSHADE Recovery Process"
+        description="From free consultation to fund return — see the 5-step NOXSHADE process for tracing, investigating, and recovering lost digital assets."
+        path="/how-it-works"
+      />
       <Navigation />
       
       <main className="flex-1 pt-16">

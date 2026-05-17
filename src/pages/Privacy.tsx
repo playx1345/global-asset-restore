@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -78,6 +79,11 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Privacy Policy | NOXSHADE"
+        description="How NOXSHADE collects, uses, and protects your personal data — GDPR-compliant privacy policy for clients and visitors."
+        path="/privacy"
+      />
       <Navigation />
       
       <main className="flex-1 pt-16">

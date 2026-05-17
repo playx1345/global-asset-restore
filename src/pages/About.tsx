@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -7,6 +8,11 @@ import aboutHeroImage from "@/assets/about-hero-bg.jpg";
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="About NOXSHADE | Trusted Digital Asset Recovery Team"
+        description="Meet the NOXSHADE team — blockchain forensics specialists, ex-law-enforcement investigators, and recovery experts dedicated to returning your assets."
+        path="/about"
+      />
       <Navigation />
       
       <main className="flex-1 pt-16">

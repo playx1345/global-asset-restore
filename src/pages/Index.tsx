@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -13,6 +14,11 @@ import indexCtaImage from "@/assets/index-cta-bg.jpg";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="NOXSHADE | Crypto & Digital Asset Recovery Experts"
+        description="Recover lost cryptocurrency and digital assets with NOXSHADE. Blockchain forensics, 98% success rate, 24/7 confidential support."
+        path="/"
+      />
       <Navigation />
       <Hero />
 
