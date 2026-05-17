@@ -125,14 +125,19 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
     }
   }
 
-  async function updateCase(field: 'status' | 'priority' | 'assigned_to', value: string | null) {
+  type CaseUpdate =
+    | { status: 'pending' | 'in_progress' | 'resolved' | 'closed' }
+    | { priority: 'low' | 'medium' | 'high' | 'urgent' }
+    | { assigned_to: string | null };
+
+  async function updateCase(update: CaseUpdate) {
     if (!caseId) return;
 
     setUpdating(true);
     try {
       const { error } = await supabase
         .from('cases')
-        .update({ [field]: value } as never)
+        .update(update)
         .eq('id', caseId);
 
       if (error) throw error;
@@ -201,7 +206,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                   <label className="text-sm font-medium">Status</label>
                   <Select
                     value={caseData.status}
-                    onValueChange={(value) => updateCase('status', value)}
+                    onValueChange={(value) => updateCase({ status: value as 'pending' | 'in_progress' | 'resolved' | 'closed' })}
                     disabled={updating}
                   >
                     <SelectTrigger>
@@ -220,7 +225,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                   <label className="text-sm font-medium">Priority</label>
                   <Select
                     value={caseData.priority}
-                    onValueChange={(value) => updateCase('priority', value)}
+                    onValueChange={(value) => updateCase({ priority: value as 'low' | 'medium' | 'high' | 'urgent' })}
                     disabled={updating}
                   >
                     <SelectTrigger>
@@ -239,7 +244,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                   <label className="text-sm font-medium">Assigned To</label>
                   <Select
                     value={caseData.assigned_to || 'unassigned'}
-                    onValueChange={(value) => updateCase('assigned_to', value === 'unassigned' ? null : value)}
+                    onValueChange={(value) => updateCase({ assigned_to: value === 'unassigned' ? null : value })}
                     disabled={updating}
                   >
                     <SelectTrigger>
