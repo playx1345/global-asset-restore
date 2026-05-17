@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -115,6 +116,11 @@ const overallStats = [
 const SuccessStories = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Success Stories | Real NOXSHADE Recovery Cases"
+        description="Read real case studies from NOXSHADE clients — recovered crypto, romance-scam refunds, and blockchain-traced fund returns."
+        path="/success-stories"
+      />
       <Navigation />
       
       {/* Hero Section */}
