@@ -59,6 +59,11 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <SEO
+        title="Sign In | NOXSHADE Client Portal"
+        description="Sign in to your NOXSHADE client portal to track recovery cases and message your assigned investigator."
+        path="/auth"
+      />
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-8">
           <Link to="/" className="flex items-center gap-2">
