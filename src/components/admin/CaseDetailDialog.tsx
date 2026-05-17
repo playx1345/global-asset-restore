@@ -206,7 +206,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                   <label className="text-sm font-medium">Status</label>
                   <Select
                     value={caseData.status}
-                    onValueChange={(value) => updateCase('status', value)}
+                    onValueChange={(value) => updateCase({ status: value as 'pending' | 'in_progress' | 'resolved' | 'closed' })}
                     disabled={updating}
                   >
                     <SelectTrigger>
