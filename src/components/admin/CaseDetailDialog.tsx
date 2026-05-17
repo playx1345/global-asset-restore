@@ -125,14 +125,19 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
     }
   }
 
-  async function updateCase(field: 'status' | 'priority' | 'assigned_to', value: string | null) {
+  type CaseUpdate =
+    | { status: 'pending' | 'in_progress' | 'resolved' | 'closed' }
+    | { priority: 'low' | 'medium' | 'high' | 'urgent' }
+    | { assigned_to: string | null };
+
+  async function updateCase(update: CaseUpdate) {
     if (!caseId) return;
 
     setUpdating(true);
     try {
       const { error } = await supabase
         .from('cases')
-        .update({ [field]: value } as never)
+        .update(update)
         .eq('id', caseId);
 
       if (error) throw error;
