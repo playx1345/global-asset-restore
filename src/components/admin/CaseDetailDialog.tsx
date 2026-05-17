@@ -125,14 +125,14 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
     }
   }
 
-  async function updateCase(field: string, value: string | null) {
+  async function updateCase(field: 'status' | 'priority' | 'assigned_to', value: string | null) {
     if (!caseId) return;
 
     setUpdating(true);
     try {
       const { error } = await supabase
         .from('cases')
-        .update({ [field]: value })
+        .update({ [field]: value } as never)
         .eq('id', caseId);
 
       if (error) throw error;
