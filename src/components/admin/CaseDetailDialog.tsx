@@ -244,7 +244,7 @@ export function CaseDetailDialog({ caseId, open, onOpenChange, onUpdate }: CaseD
                   <label className="text-sm font-medium">Assigned To</label>
                   <Select
                     value={caseData.assigned_to || 'unassigned'}
-                    onValueChange={(value) => updateCase('assigned_to', value === 'unassigned' ? null : value)}
+                    onValueChange={(value) => updateCase({ assigned_to: value === 'unassigned' ? null : value })}
                     disabled={updating}
                   >
                     <SelectTrigger>
