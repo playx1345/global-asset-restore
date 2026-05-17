@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import serviceWhatsapp from "@/assets/service-whatsapp.jpg";
 import serviceInstagram from "@/assets/service-instagram.jpg";
@@ -90,19 +90,36 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               <div className="p-5 sm:p-6 relative">
+                <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-[11px] font-medium text-primary">
+                  <ShieldCheck className="h-3 w-3" />
+                  Free consultation
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 line-clamp-3">
+                <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3">
                   {service.description}
                 </p>
-                <Link
-                  to="/services"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-primary md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300"
-                >
-                  Learn More
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 border-t border-border/40 mt-2 pt-3">
+                  <Button variant="neon" size="sm" asChild className="gap-1.5 flex-1 min-w-[140px]">
+                    <a
+                      href="https://wa.me/12495275672"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Start ${service.title} on WhatsApp`}
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      Start Now
+                    </a>
+                  </Button>
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:gap-2 transition-all duration-300"
+                  >
+                    Learn More
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </Card>
           ))}
