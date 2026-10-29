@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const Navigation = () => {
+const Navigation = ({ compact = false }: { compact?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -47,6 +47,22 @@ const Navigation = () => {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  if (compact) {
+    return (
+      <nav className="home-nav" aria-label="Main navigation">
+        <div className="home-container home-nav-inner">
+          <Link to="/" className="home-logo"><Shield /><span>SPECTRA TRACE</span></Link>
+          <div className="home-nav-actions">
+            <Link to="/services">Services</Link>
+            <Button variant="outline" size="sm" asChild className="home-secondary"><Link to={user ? "/portal" : "/auth"}>{user ? "Portal" : "Sign in"}</Link></Button>
+            <Button variant="ghost" size="icon" aria-label="Toggle menu" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X /> : <Menu />}</Button>
+          </div>
+        </div>
+        {isOpen && <div className="home-container grid grid-cols-2 gap-3 py-5 border-t border-border">{navItems.map(item => <Link key={item.path} to={item.path} className="py-2 text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>{item.name}</Link>)}<Button asChild className="home-primary col-span-2"><Link to="/start">Start Assessment</Link></Button></div>}
+      </nav>
+    );
+  }
 
   return (
     <nav
