@@ -15,8 +15,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="NOXSHADE | Crypto & Digital Asset Recovery Experts"
-        description="Recover lost cryptocurrency and digital assets with NOXSHADE. Blockchain forensics, 98% success rate, 24/7 confidential support."
+        title="SPECTRA TRACE | Crypto & Digital Asset Recovery Experts"
+        description="Recover lost cryptocurrency and digital assets with SPECTRA TRACE. Blockchain forensics, 98% success rate, 24/7 confidential support."
         path="/"
       />
       <Navigation />

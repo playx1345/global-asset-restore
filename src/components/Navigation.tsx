@@ -65,7 +65,7 @@ const Navigation = () => {
           >
             <Shield className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
             <span className="text-foreground group-hover:text-primary transition-colors duration-300">
-              NOXSHADE
+              SPECTRA TRACE
             </span>
           </Link>
 
