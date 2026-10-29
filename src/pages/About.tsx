@@ -9,8 +9,8 @@ const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="About NOXSHADE | Trusted Digital Asset Recovery Team"
-        description="Meet the NOXSHADE team — blockchain forensics specialists, ex-law-enforcement investigators, and recovery experts dedicated to returning your assets."
+        title="About SPECTRA TRACE | Trusted Digital Asset Recovery Team"
+        description="Meet the SPECTRA TRACE team — blockchain forensics specialists, ex-law-enforcement investigators, and recovery experts dedicated to returning your assets."
         path="/about"
       />
       <Navigation />
@@ -21,7 +21,7 @@ const About = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src={aboutHeroImage} 
-              alt="NOXSHADE team" 
+              alt="SPECTRA TRACE team" 
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/80" />
@@ -36,7 +36,7 @@ const About = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                About <span className="gradient-text-animated">NOXSHADE</span>
+                About <span className="gradient-text-animated">SPECTRA TRACE</span>
               </h1>
               <p className="text-xl text-primary-foreground/90">
                 Leading the way in digital asset recovery with expertise, empathy, and results
@@ -55,7 +55,7 @@ const About = () => {
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Restoring What Matters Most</h2>
                 <p className="text-lg text-muted-foreground mb-4">
-                  At NOXSHADE, we believe that no one should lose their hard-earned digital assets to fraud, technical failures, or sophisticated scams. Our mission is to restore what matters most—your financial security and peace of mind.
+                  At SPECTRA TRACE, we believe that no one should lose their hard-earned digital assets to fraud, technical failures, or sophisticated scams. Our mission is to restore what matters most—your financial security and peace of mind.
                 </p>
                 <p className="text-lg text-muted-foreground">
                   We combine cutting-edge blockchain forensics, legal expertise, and compassionate client care to deliver results that exceed expectations.
@@ -105,7 +105,7 @@ const About = () => {
                     
                     <div className="max-w-2xl mx-auto text-muted-foreground space-y-4 mt-6">
                       <p>
-                        With over a decade of experience in blockchain technology and financial forensics, Silas founded NOXSHADE to help victims of digital asset theft and fraud reclaim what's rightfully theirs.
+                        With over a decade of experience in blockchain technology and financial forensics, Silas founded SPECTRA TRACE to help victims of digital asset theft and fraud reclaim what's rightfully theirs.
                       </p>
                       <p>
                         His expertise spans cryptocurrency tracing, smart contract analysis, and international financial law. Under his leadership, the team has successfully recovered millions in digital assets for clients worldwide.
@@ -129,7 +129,7 @@ const About = () => {
               </div>
               <div className="max-w-3xl mx-auto space-y-0">
                 {[
-                  { year: "2019", title: "Foundation", desc: "NOXSHADE was founded with a mission to help crypto fraud victims" },
+                  { year: "2019", title: "Foundation", desc: "SPECTRA TRACE was founded with a mission to help crypto fraud victims" },
                   { year: "2021", title: "Milestone", desc: "Successfully recovered $1M in digital assets for clients worldwide" },
                   { year: "2023", title: "Expansion", desc: "Expanded team and services to cover all major blockchains" },
                   { year: "2024", title: "Today", desc: "Over $2M recovered with a 98% success rate and growing" },

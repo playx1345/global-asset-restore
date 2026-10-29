@@ -38,7 +38,7 @@ const caseStudies = [
       { phase: "Legal Coordination", days: 18 },
       { phase: "Asset Recovery", days: 7 }
     ],
-    testimonial: "I thought I'd never see my money again. NOXSHADE gave me hope when no one else could help.",
+    testimonial: "I thought I'd never see my money again. SPECTRA TRACE gave me hope when no one else could help.",
     image: "romance"
   },
   {
@@ -80,7 +80,7 @@ const caseStudies = [
       { phase: "Protocol Coordination", days: 12 },
       { phase: "Recovery Execution", days: 7 }
     ],
-    testimonial: "We contacted NOXSHADE within hours of the theft. Their rapid response was crucial to getting our crypto back.",
+    testimonial: "We contacted SPECTRA TRACE within hours of the theft. Their rapid response was crucial to getting our crypto back.",
     image: "phishing"
   },
   {
@@ -101,7 +101,7 @@ const caseStudies = [
       { phase: "Legal Proceedings", days: 28 },
       { phase: "Asset Distribution", days: 12 }
     ],
-    testimonial: "NOXSHADE's expertise in corporate-level crypto recovery was invaluable. They navigated complex legal frameworks across multiple jurisdictions.",
+    testimonial: "SPECTRA TRACE's expertise in corporate-level crypto recovery was invaluable. They navigated complex legal frameworks across multiple jurisdictions.",
     image: "exchange"
   }
 ];
@@ -117,8 +117,8 @@ const SuccessStories = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Success Stories | Real NOXSHADE Recovery Cases"
-        description="Read real case studies from NOXSHADE clients — recovered crypto, romance-scam refunds, and blockchain-traced fund returns."
+        title="Success Stories | Real SPECTRA TRACE Recovery Cases"
+        description="Read real case studies from SPECTRA TRACE clients — recovered crypto, romance-scam refunds, and blockchain-traced fund returns."
         path="/success-stories"
       />
       <Navigation />

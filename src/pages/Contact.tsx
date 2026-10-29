@@ -116,8 +116,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Contact NOXSHADE | 24/7 Recovery Support"
-        description="Reach the NOXSHADE recovery team via WhatsApp or email for a free, confidential consultation about your lost crypto or digital assets."
+        title="Contact SPECTRA TRACE | 24/7 Recovery Support"
+        description="Reach the SPECTRA TRACE recovery team via WhatsApp or email for a free, confidential consultation about your lost crypto or digital assets."
         path="/contact"
       />
       <Navigation />

@@ -12,6 +12,7 @@ import Portal from "@/pages/Portal";
 import SuccessStories from "@/pages/SuccessStories";
 import Privacy from "@/pages/Privacy";
 import NotFound from "@/pages/NotFound";
+import StartAssessment from "@/pages/StartAssessment";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const AnimatedRoutes = () => {
         <Route path="/success-stories" element={<PageTransition><SuccessStories /></PageTransition>} />
         <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
         <Route path="/portal" element={<ProtectedRoute><PageTransition><Portal /></PageTransition></ProtectedRoute>} />
+        <Route path="/start" element={<PageTransition><StartAssessment /></PageTransition>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

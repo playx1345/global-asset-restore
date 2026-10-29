@@ -259,7 +259,7 @@ const ServicesPage = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Digital Asset Recovery",
-    provider: { "@type": "Organization", name: "NOXSHADE" },
+    provider: { "@type": "Organization", name: "SPECTRA TRACE" },
     areaServed: "Worldwide",
     description: "Cryptocurrency recovery, blockchain investigation, account recovery, and digital fraud forensics.",
   };
@@ -267,8 +267,8 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Recovery Services | NOXSHADE Digital Asset Recovery"
-        description="Explore NOXSHADE's digital asset recovery services: crypto recovery, blockchain investigation, account recovery, and fraud forensics."
+        title="Recovery Services | SPECTRA TRACE Digital Asset Recovery"
+        description="Explore SPECTRA TRACE's digital asset recovery services: crypto recovery, blockchain investigation, account recovery, and fraud forensics."
         path="/services"
         jsonLd={[faqSchema, serviceSchema]}
       />

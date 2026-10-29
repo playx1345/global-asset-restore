@@ -80,8 +80,8 @@ const Privacy = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Privacy Policy | NOXSHADE"
-        description="How NOXSHADE collects, uses, and protects your personal data — GDPR-compliant privacy policy for clients and visitors."
+        title="Privacy Policy | SPECTRA TRACE"
+        description="How SPECTRA TRACE collects, uses, and protects your personal data — GDPR-compliant privacy policy for clients and visitors."
         path="/privacy"
       />
       <Navigation />
@@ -122,7 +122,7 @@ const Privacy = () => {
               <Card variant="gradient" className="p-8">
                 <h2 className="text-2xl font-bold mb-4">Our Commitment to Privacy</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  At NOXSHADE, we are committed to protecting your privacy and ensuring 
+                  At SPECTRA TRACE, we are committed to protecting your privacy and ensuring 
                   the security of your personal information. This Privacy Policy explains how we collect, 
                   use, disclose, and safeguard your information when you visit our website or use our services.
                 </p>

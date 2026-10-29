@@ -1,11 +1,11 @@
-# NOXSHADE
+# SPECTRA TRACE
 
 > Professional digital asset and cryptocurrency recovery services. Blockchain forensics, scam investigation, and recovery for victims of crypto fraud, romance scams, and account takeovers.
 
 ## Pages
 
 - [Home](/): Overview of recovery services, trust metrics, and FAQs.
-- [About](/about): The NOXSHADE team, mission, and credentials.
+- [About](/about): The SPECTRA TRACE team, mission, and credentials.
 - [Services](/services): Crypto recovery, blockchain investigation, account recovery, and fraud forensics.
 - [How It Works](/how-it-works): The 5-step recovery process from consultation to fund return.
 - [Success Stories](/success-stories): Real case studies of recovered digital assets.

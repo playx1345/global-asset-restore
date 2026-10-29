@@ -67,8 +67,8 @@ const HowItWorks = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="How It Works | NOXSHADE Recovery Process"
-        description="From free consultation to fund return — see the 5-step NOXSHADE process for tracing, investigating, and recovering lost digital assets."
+        title="How It Works | SPECTRA TRACE Recovery Process"
+        description="From free consultation to fund return — see the 5-step SPECTRA TRACE process for tracing, investigating, and recovering lost digital assets."
         path="/how-it-works"
       />
       <Navigation />
