@@ -117,10 +117,10 @@ const Navigation = () => {
                   <Link to="/auth">Sign In</Link>
                 </Button>
                 <Button variant="neon" size="sm" className="gap-2" asChild>
-                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
+                  <Link to="/start">
                     <Phone className="h-4 w-4" />
-                    Start Recovery
-                  </a>
+                    Start Assessment
+                  </Link>
                 </Button>
               </>
             )}
@@ -226,10 +226,10 @@ const Navigation = () => {
                   </Link>
                 </Button>
                 <Button variant="neon" className="w-full gap-2" size="lg" asChild>
-                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
+                  <Link to="/start" onClick={() => setIsOpen(false)}>
                     <Phone className="h-5 w-5" />
-                    Start Recovery
-                  </a>
+                    Start Assessment
+                  </Link>
                 </Button>
               </>
             )}

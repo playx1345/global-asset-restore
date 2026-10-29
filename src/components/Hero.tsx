@@ -67,7 +67,7 @@ const Hero = () => {
           >
             <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary animate-glow-pulse" />
             <span className="text-xs sm:text-sm font-medium text-foreground">
-              Trusted by clients worldwide
+              Vetted · Discreet · Evidence-first
             </span>
           </div>
 
@@ -76,9 +76,9 @@ const Hero = () => {
             className="text-fluid-3xl font-bold leading-tight opacity-0 animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            <span className="text-foreground">Lost Crypto?</span>
+            <span className="text-foreground">Elite Digital Forensics.</span>
             <br />
-            <span className="gradient-text-animated text-glow">We Recover What Matters.</span>
+            <span className="gradient-text-animated text-glow">Trace. Recover. Restore.</span>
           </h1>
 
           {/* Subheading */}
@@ -86,8 +86,8 @@ const Hero = () => {
             className="text-fluid-lg text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in"
             style={{ animationDelay: "0.3s" }}
           >
-            Professional blockchain investigation and digital asset recovery services.
-            Your funds, your security, our expertise.
+            Blockchain tracing, account recovery and fraud investigation by certified specialists.
+            Free 24-hour assessment. Clear pricing before any work begins.
           </p>
 
           {/* CTA Buttons with Neon Effects */}
@@ -96,12 +96,10 @@ const Hero = () => {
             style={{ animationDelay: "0.4s" }}
           >
             <Button variant="neon" size="xl" asChild className="w-full sm:w-auto">
-              <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
-                Start Your Recovery
-              </a>
+              <Link to="/start">Start Free Assessment</Link>
             </Button>
             <Button variant="glass" size="xl" asChild className="w-full sm:w-auto">
-              <Link to="/how-it-works">How It Works</Link>
+              <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">Talk to a Specialist</a>
             </Button>
           </div>
 
@@ -111,9 +109,9 @@ const Hero = () => {
             style={{ animationDelay: "0.5s" }}
           >
             {[
-              { icon: CheckCircle2, label: "$2M+ Recovered", color: "neon-green" },
-              { icon: TrendingUp, label: "98% Success Rate", color: "neon-cyan" },
-              { icon: Shield, label: "Bank-Grade Security", color: "neon-purple" },
+              { icon: CheckCircle2, label: "Upfront pricing", color: "neon-green" },
+              { icon: TrendingUp, label: "24h triage", color: "neon-cyan" },
+              { icon: Shield, label: "Encrypted intake", color: "neon-purple" },
             ].map((item, index) => (
               <div
                 key={index}
