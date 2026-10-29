@@ -72,12 +72,12 @@
   .reference-home .home-nav-inner { height: 58px; }
   .reference-home .home-logo { font-size: 12px; gap: 6px; }
   .reference-home .home-nav-actions { gap: 4px; }
-  .reference-home .home-nav-actions > a { display: none; }
+  .reference-home .home-nav-actions > a:not(.home-secondary) { display: none; }
   .reference-home .home-hero { min-height: 465px; height: auto; }
   .reference-home .home-hero-image { object-position: left center; opacity: .25; }
-  .reference-home .home-hero-content { padding-block: 48px 40px; }
+  .reference-home .home-hero-content { padding-block: 32px; }
   .reference-home .home-hero-copy { width: 100%; }
-  .reference-home .home-hero h1 { font-size: 34px; margin-block: 20px; }
+  .reference-home .home-hero h1 { font-size: 30px; margin-block: 18px; }
   .reference-home .home-hero p { font-size: 13px; line-height: 1.7; }
   .reference-home .home-actions { gap: 8px; margin-top: 22px; }
   .reference-home .home-actions a { font-size: 12px; padding-inline: 14px; }
