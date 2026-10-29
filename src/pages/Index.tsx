@@ -1,180 +1,51 @@
 import SEO from "@/components/SEO";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Shield, Zap, Globe, ArrowRight, Coins, SearchCheck } from "lucide-react";
+import { Shield, Globe, ArrowRight, Coins, SearchCheck, Lock, FileSearch, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
-import indexCtaImage from "@/assets/index-cta-bg.jpg";
+import "@/components/homepage.css";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="SPECTRA TRACE | Crypto & Digital Asset Recovery Experts"
-        description="Recover lost cryptocurrency and digital assets with SPECTRA TRACE. Blockchain forensics, 98% success rate, 24/7 confidential support."
-        path="/"
-      />
-      <Navigation />
+const reasons = [
+  { icon: Lock, title: "Strict Confidentiality", text: "Your identity and case details are treated with care and shared only as needed for your case." },
+  { icon: FileSearch, title: "Evidence-First", text: "Transaction trails and documented findings guide the investigation, not promises." },
+  { icon: MessageCircle, title: "Personal Support", text: "Understand your options and stay informed throughout your recovery journey." },
+  { icon: Globe, title: "Global Perspective", text: "Support for cross-border digital asset and account recovery cases." },
+];
+const steps = [
+  { title: "Confidential Intake", text: "Tell us what happened and share the evidence you already have." },
+  { title: "Case Assessment", text: "We review your situation and explain feasible next steps." },
+  { title: "Clear Engagement", text: "Agree on scope, pricing, and expectations before work begins." },
+  { title: "Investigation & Recovery", text: "We document findings and pursue lawful recovery options. Outcomes vary by case." },
+];
+
+const Index = () => (
+  <div className="reference-home min-h-screen">
+    <SEO title="SPECTRA TRACE | Digital Asset Recovery & Investigations" description="Confidential digital asset recovery, blockchain investigations, and account recovery. Start your case assessment with SPECTRA TRACE." path="/" />
+    <Navigation compact />
+    <main>
       <Hero />
-
-      {/* Trust Metrics Section */}
-      <section className="py-24 bg-background relative overflow-hidden">
-        {/* Blockchain grid background */}
-        <div className="absolute inset-0 blockchain-grid opacity-20 pointer-events-none" />
-        
-        {/* Background mesh */}
-        <div className="absolute inset-0 bg-mesh opacity-40 pointer-events-none" />
-
-        <div className="container mx-auto px-4 relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              { 
-                icon: Shield, 
-                title: "Trusted Worldwide", 
-                number: 50, 
-                suffix: "+", 
-                label: "countries served",
-                color: "cyan" 
-              },
-              { 
-                icon: Zap, 
-                title: "Fast Recovery", 
-                number: 2, 
-                suffix: "-4 weeks", 
-                label: "average recovery time",
-                color: "purple" 
-              },
-              { 
-                icon: Globe, 
-                title: "All Blockchains", 
-                number: 20, 
-                suffix: "+", 
-                label: "major networks supported",
-                color: "green" 
-              },
-            ].map((item, index) => (
-              <Card
-                key={index}
-                variant="neon"
-                className="p-8 text-center group opacity-0 animate-scale-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-5 group-hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
-                  <item.icon className="h-8 w-8 text-primary icon-glow" />
-                </div>
-                <h3 className="font-bold text-lg mb-3 text-foreground">{item.title}</h3>
-                <div className="text-4xl font-bold gradient-text mb-2">
-                  <AnimatedCounter end={item.number} suffix={item.suffix} duration={2000} />
-                </div>
-                <p className="text-muted-foreground text-sm">{item.label}</p>
-              </Card>
-            ))}
-          </div>
+      <div className="home-container home-stats" aria-label="Our approach">
+        {[ ["Global", "Case support"], ["Discreet", "Client-first approach"], ["Evidence-led", "Investigations"], ["Lawful", "Recovery methods"] ].map(([title, label]) => <div key={title}><strong>{title}</strong><span>{label}</span></div>)}
+      </div>
+      <section className="home-container home-section">
+        <p className="home-section-label">Operations</p><h2>What We Do</h2>
+        <p className="home-section-intro">Two specialised practices, one principle: a clean, evidence-led path back to your assets or to the answers you need.</p>
+        <div className="home-practices">
+          <article className="home-practice"><Coins /><h3>Asset Recovery</h3><p>Crypto, investment fraud, and online scams. We trace funds, organise evidence, and help you pursue lawful recovery.</p><Link to="/services">Explore recovery <ArrowRight size={16} /></Link></article>
+          <article className="home-practice"><SearchCheck /><h3>Digital Investigations</h3><p>Account compromise, email fraud, and data loss. Understand the incident, recover access where possible, and strengthen your security.</p><Link to="/services">Explore investigations <ArrowRight size={16} /></Link></article>
         </div>
       </section>
-
-      {/* Practice areas */}
-      <section className="py-16 sm:py-24 bg-background relative">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs tracking-[0.3em] text-primary mb-3">OPERATIONS</p>
-            <h2 className="text-fluid-2xl font-bold text-foreground mb-4">What We Do</h2>
-            <p className="text-muted-foreground">Two specialised practices, one principle: a clean, evidence-led path back to your assets.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {[
-              { icon: Coins, title: "Asset Recovery", desc: "Crypto, exchange and investment-fraud cases. We trace funds on-chain, build the evidence file and pursue lawful return through exchanges and authorities.", link: "/services" },
-              { icon: SearchCheck, title: "Digital Forensics & Account Recovery", desc: "Hacked WhatsApp, Instagram, Facebook and email accounts, phishing incidents and data loss — investigated and restored with security hardening.", link: "/services" },
-            ].map((p) => (
-              <Card key={p.title} variant="neon" className="p-8 group">
-                <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-5 group-hover:shadow-glow transition-all">
-                  <p.icon className="h-8 w-8 text-primary icon-glow" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{p.title}</h3>
-                <p className="text-muted-foreground mb-6">{p.desc}</p>
-                <Link to={p.link} className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                  Explore <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Services />
+      <section className="home-container home-section"><p className="home-section-label">Why SPECTRA TRACE</p><h2>Why Clients Choose Us</h2><p className="home-section-intro">A careful, transparent approach to your most sensitive matters.</p><div className="home-reasons">{reasons.map(({icon: Icon, title, text}) => <div className="home-reason" key={title}><Icon /><h3>{title}</h3><p>{text}</p></div>)}</div></section>
+      <section className="home-container home-section"><p className="home-section-label">Process</p><h2>How It Works</h2><p className="home-section-intro">A clear path from your first message to the next step.</p><div className="home-reasons">{steps.map((step, i) => <div className="home-reason" key={step.title}><span className="home-step">0{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}</div></section>
       <Testimonials />
       <FAQ />
-
-      {/* Final CTA */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={indexCtaImage}
-            alt="Security and protection"
-            className="w-full h-full object-cover scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/80" />
-        </div>
-        
-        {/* Blockchain grid overlay */}
-        <div className="absolute inset-0 z-[1] blockchain-grid opacity-30" />
-        
-        {/* Background mesh */}
-        <div className="absolute inset-0 z-[1] bg-mesh opacity-60" />
-        
-        {/* Floating orbs */}
-        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-          <div 
-            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[100px] animate-float-slow opacity-15"
-            style={{ background: "radial-gradient(circle, hsl(var(--neon-cyan)) 0%, transparent 70%)" }}
-          />
-          <div 
-            className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] rounded-full blur-[80px] animate-float opacity-10"
-            style={{ background: "radial-gradient(circle, hsl(var(--neon-purple)) 0%, transparent 70%)", animationDelay: "-2s" }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <h2
-              className="text-fluid-2xl font-bold mb-6 opacity-0 animate-fade-in"
-            >
-              <span className="text-foreground">Don't Let </span>
-              <span className="gradient-text-animated">Scammers Win</span>
-            </h2>
-            <p
-              className="text-fluid-lg text-muted-foreground mb-10 opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.1s" }}
-            >
-              Every minute counts. Start your recovery process today and take back what's yours.
-            </p>
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <Button variant="neon" size="xl" asChild className="gap-2">
-                <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
-                  Contact Us on WhatsApp
-                  <ArrowRight className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button variant="cyber" size="xl" asChild>
-                <Link to="/start">Start Free Assessment</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
-
+      <section className="home-container home-section home-final"><Shield className="mx-auto mb-5 text-primary" /><h2>Let’s take the next step.</h2><p className="home-section-intro">Tell us what happened. We’ll help you understand your options.</p><div className="home-actions"><Button asChild className="home-primary"><Link to="/start">Start Your Assessment <ArrowRight /></Link></Button><Button asChild variant="outline" className="home-secondary"><a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">Talk on WhatsApp</a></Button></div></section>
+    </main>
+    <Footer />
+  </div>
+);
 export default Index;
