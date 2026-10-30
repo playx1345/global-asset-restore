@@ -174,7 +174,7 @@ const Navigation = ({ compact = false }: { compact?: boolean }) => {
 
       {/* Mobile Navigation Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 glass-strong backdrop-blur-2xl transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 z-[60] glass-strong backdrop-blur-2xl transition-all duration-500 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
