@@ -43,7 +43,7 @@ const Index = () => (
       <section className="home-container home-section"><p className="home-section-label">Process</p><h2>How It Works</h2><p className="home-section-intro">A clear path from your first message to the next step.</p><div className="home-reasons">{steps.map((step, i) => <div className="home-reason" key={step.title}><span className="home-step">0{i + 1}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}</div></section>
       <Testimonials />
       <FAQ />
-      <section className="home-container home-section home-final"><Shield className="mx-auto mb-5 text-primary" /><h2>Let’s take the next step.</h2><p className="home-section-intro">Tell us what happened. We’ll help you understand your options.</p><div className="home-actions"><Button asChild className="home-primary"><Link to="/start">Start Your Assessment <ArrowRight /></Link></Button><Button asChild variant="outline" className="home-secondary"><a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">Talk on WhatsApp</a></Button></div></section>
+      <section className="home-container home-section home-final"><Shield className="mx-auto mb-5 text-primary" /><h2>Let’s take the next step.</h2><p className="home-section-intro">Tell us what happened. We’ll help you understand your options.</p><div className="home-actions"><Button asChild className="home-primary"><Link to="/start">Start Your Assessment <ArrowRight /></Link></Button><Button asChild variant="outline" className="home-secondary"><a href="https://t.me/spectrace" target="_blank" rel="noopener noreferrer">Talk on Telegram</a></Button></div></section>
     </main>
     <Footer />
   </div>

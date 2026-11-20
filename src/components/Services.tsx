@@ -103,10 +103,10 @@ const Services = () => {
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 border-t border-border/40 mt-2 pt-3">
                   <Button variant="neon" size="sm" asChild className="gap-1.5 flex-1 min-w-[140px]">
                     <a
-                      href="https://wa.me/12495275672"
+                      href="https://t.me/spectrace"
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Start ${service.title} on WhatsApp`}
+                      aria-label={`Start ${service.title} on Telegram`}
                     >
                       <MessageCircle className="h-4 w-4" />
                       Start Now

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MessageCircle, ArrowUp, Send } from "lucide-react";
+import { Mail, ArrowUp, Send } from "lucide-react";
 import logoMark from "@/assets/logo-mark.png";
 import { Button } from "@/components/ui/button";
 
@@ -70,19 +70,6 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-5 text-lg">Contact Us</h3>
             <ul className="space-y-4 text-sm">
-              <li>
-                <a
-                  href="https://wa.me/12495275672"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
-                >
-                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
-                    <MessageCircle className="h-4 w-4 text-primary" />
-                  </div>
-                  <span>+1 (249) 527-5672</span>
-                </a>
-              </li>
               <li>
                 <a
                   href="https://t.me/spectrace"

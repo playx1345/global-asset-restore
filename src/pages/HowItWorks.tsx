@@ -12,7 +12,7 @@ const steps = [
     number: "01",
     title: "Initial Consultation",
     icon: MessageCircle,
-    description: "Contact us via WhatsApp or email. Share your case details and we'll assess your situation within 24 hours.",
+    description: "Contact us via Telegram or email. Share your case details and we'll assess your situation within 24 hours.",
     details: ["Free consultation", "Confidential review", "Quick response time"],
   },
   {
@@ -213,7 +213,7 @@ const HowItWorks = () => {
                   toward recovering your digital assets.
                 </p>
                 <Button variant="hero" size="lg" asChild className="group">
-                  <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
+                  <a href="https://t.me/spectrace" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                     Start Free Consultation
                   </a>

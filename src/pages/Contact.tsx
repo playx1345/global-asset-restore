@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MessageCircle, Mail, Clock, MapPin, Send } from "lucide-react";
+import { Mail, Clock, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -56,16 +56,13 @@ const Contact = () => {
     setErrors({});
     
     // Properly encode each field for URL safety to prevent injection
-    const encodedName = encodeURIComponent(result.data.name);
-    const encodedEmail = encodeURIComponent(result.data.email);
-    const encodedSubject = encodeURIComponent(result.data.subject);
-    const encodedMessage = encodeURIComponent(result.data.message);
-    
-    // Create WhatsApp message with properly encoded form data
-    const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${encodedName}%0AEmail: ${encodedEmail}%0ASubject: ${encodedSubject}%0AMessage: ${encodedMessage}`;
-    
-    // Open WhatsApp
-    window.open(`https://wa.me/12495275672?text=${whatsappMessage}`, "_blank");
+    const subject = encodeURIComponent(`New Contact Form Submission: ${result.data.subject}`);
+    const body = encodeURIComponent(
+      `Name: ${result.data.name}\nEmail: ${result.data.email}\nSubject: ${result.data.subject}\nMessage: ${result.data.message}`
+    );
+
+    // Open the visitor's email client with the pre-filled message
+    window.location.href = `mailto:globaltechrecovery134@gmail.com?subject=${subject}&body=${body}`;
     
     toast({
       title: "Message sent!",
@@ -86,18 +83,11 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      value: "+1 (249) 527-5672",
-      href: "https://wa.me/12495275672",
-      subtitle: "Fastest response time",
-    },
-    {
       icon: Send,
       title: "Telegram",
       value: "@spectrace",
       href: "https://t.me/spectrace",
-      subtitle: "Chat with us on Telegram",
+      subtitle: "Fastest response time",
     },
     {
       icon: Mail,
@@ -131,7 +121,7 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col">
       <SEO
         title="Contact SPECTRA TRACE | 24/7 Recovery Support"
-        description="Reach the SPECTRA TRACE recovery team via WhatsApp or email for a free, confidential consultation about your lost crypto or digital assets."
+        description="Reach the SPECTRA TRACE recovery team via Telegram or email for a free, confidential consultation about your lost crypto or digital assets."
         path="/contact"
       />
       <Navigation />
@@ -295,11 +285,11 @@ const Contact = () => {
                   <div className="relative z-10">
                     <h3 className="font-bold text-lg mb-2">Emergency Case?</h3>
                     <p className="mb-4 text-accent-foreground/90">
-                      For urgent recovery needs, contact us immediately on WhatsApp
+                      For urgent recovery needs, contact us immediately on Telegram
                     </p>
                     <Button variant="hero" asChild className="w-full bg-background/20 hover:bg-background/30">
-                      <a href="https://wa.me/12495275672" target="_blank" rel="noopener noreferrer">
-                        <MessageCircle className="mr-2 h-5 w-5" />
+                      <a href="https://t.me/spectrace" target="_blank" rel="noopener noreferrer">
+                        <Send className="mr-2 h-5 w-5" />
                         Contact Now
                       </a>
                     </Button>

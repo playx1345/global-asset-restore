@@ -224,7 +224,7 @@ const Privacy = () => {
                   </p>
                   <div className="space-y-2 text-sm">
                     <p><strong>Email:</strong> globaltechrecovery134@gmail.com</p>
-                    <p><strong>WhatsApp:</strong> +1 (249) 527-5672</p>
+                    <p><strong>Telegram:</strong> @spectrace</p>
                   </div>
                 </div>
               </Card>

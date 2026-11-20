@@ -25,7 +25,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
-const WHATSAPP_NUMBER = "12495275672";
+const TELEGRAM_URL = "https://t.me/spectrace";
 
 type Incident = { id: string; label: string; hint: string; icon: LucideIcon };
 
@@ -122,7 +122,7 @@ const IntakeWizard = () => {
     [incidentLabel, details, lossLabel, whenLabel, contact]
   );
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(brief)}`;
+  const telegramUrl = TELEGRAM_URL;
 
   const next = () => {
     const e: Record<string, string> = {};
@@ -156,15 +156,15 @@ const IntakeWizard = () => {
     });
     setSubmitting(false);
     if (error) {
-      toast({ title: "Could not submit", description: "Please try again or use WhatsApp.", variant: "destructive" });
+      toast({ title: "Could not submit", description: "Please try again or use Telegram.", variant: "destructive" });
       return;
     }
     setSubmitted(true);
   };
 
-  const openWhatsApp = () => {
+  const openTelegram = () => {
     if (!validateContact()) return;
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.open(telegramUrl, "_blank", "noopener,noreferrer");
   };
 
   const pillClass = (active: boolean) =>
@@ -361,8 +361,8 @@ const IntakeWizard = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button variant="neon" size="lg" className="gap-2" onClick={openWhatsApp}>
-                    <MessageCircle className="h-5 w-5" /> Send brief on WhatsApp
+                  <Button variant="neon" size="lg" className="gap-2" onClick={openTelegram}>
+                    <MessageCircle className="h-5 w-5" /> Continue on Telegram
                   </Button>
                   {user ? (
                     <Button variant="cyber" size="lg" className="gap-2" onClick={submitToPortal} disabled={submitting}>

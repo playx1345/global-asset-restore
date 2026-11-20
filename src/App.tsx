@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/hooks/useAuth";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import FloatingTelegram from "@/components/FloatingTelegram";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieConsent from "@/components/CookieConsent";
 import AnimatedRoutes from "@/components/AnimatedRoutes";
@@ -22,7 +22,7 @@ const App = () => (
           <AuthProvider>
             <AnimatedRoutes />
             <ScrollToTop />
-            <FloatingWhatsApp />
+            <FloatingTelegram />
             <CookieConsent />
           </AuthProvider>
         </BrowserRouter>
