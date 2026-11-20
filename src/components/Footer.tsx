@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Shield, Mail, MessageCircle, ArrowUp } from "lucide-react";
+import { Mail, MessageCircle, ArrowUp, Send } from "lucide-react";
+import logoMark from "@/assets/logo-mark.png";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -23,7 +24,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="inline-flex items-center gap-2 group">
-              <Shield className="h-7 w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
+              <img src={logoMark} alt="SPECTRA TRACE logo" className="h-8 w-8 object-contain group-hover:scale-110 transition-all duration-300" />
               <span className="font-bold text-xl">SPECTRA TRACE</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -83,15 +84,28 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <Link
-                  to="/contact"
+                <a
+                  href="https://t.me/spectrace"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
+                >
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
+                    <Send className="h-4 w-4 text-primary" />
+                  </div>
+                  <span>@spectrace on Telegram</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:spectratrace6@gmail.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
                 >
                   <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
                     <Mail className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Send us a message</span>
-                </Link>
+                  <span>spectratrace6@gmail.com</span>
+                </a>
               </li>
             </ul>
           </div>

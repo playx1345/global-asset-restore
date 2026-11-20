@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import logoMark from "@/assets/logo-mark.png";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -52,7 +53,7 @@ const Navigation = ({ compact = false }: { compact?: boolean }) => {
     return (
       <nav className="home-nav" aria-label="Main navigation">
         <div className="home-container home-nav-inner">
-          <Link to="/" className="home-logo"><Shield /><span>SPECTRA TRACE</span></Link>
+          <Link to="/" className="home-logo"><img src={logoMark} alt="SPECTRA TRACE logo" className="h-7 w-7 object-contain" /><span>SPECTRA TRACE</span></Link>
           <div className="home-nav-actions">
             <Link to="/services">Services</Link>
             <Button variant="outline" size="sm" asChild className="home-secondary"><Link to={user ? "/portal" : "/auth"}>{user ? "Portal" : "Sign in"}</Link></Button>
@@ -79,7 +80,7 @@ const Navigation = ({ compact = false }: { compact?: boolean }) => {
             to="/"
             className="flex items-center gap-2 font-bold text-base sm:text-lg lg:text-xl z-50 group tracking-wider"
           >
-            <Shield className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-primary group-hover:scale-110 transition-all duration-300 icon-glow" />
+            <img src={logoMark} alt="SPECTRA TRACE logo" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 object-contain group-hover:scale-110 transition-all duration-300" />
             <span className="text-foreground group-hover:text-primary transition-colors duration-300">
               SPECTRA TRACE
             </span>

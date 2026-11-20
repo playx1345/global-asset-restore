@@ -93,10 +93,24 @@ const Contact = () => {
       subtitle: "Fastest response time",
     },
     {
+      icon: Send,
+      title: "Telegram",
+      value: "@spectrace",
+      href: "https://t.me/spectrace",
+      subtitle: "Chat with us on Telegram",
+    },
+    {
       icon: Mail,
       title: "Email",
       value: "globaltechrecovery134@gmail.com",
       href: "mailto:globaltechrecovery134@gmail.com",
+      subtitle: "We'll respond within 24 hours",
+    },
+    {
+      icon: Mail,
+      title: "Email (Alt)",
+      value: "spectratrace6@gmail.com",
+      href: "mailto:spectratrace6@gmail.com",
       subtitle: "We'll respond within 24 hours",
     },
     {
