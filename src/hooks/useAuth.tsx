@@ -3,6 +3,7 @@ import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { authReturnPath } from '@/lib/intakeDraft';
 
 interface AuthContextType {
   user: User | null;
@@ -24,15 +25,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
-        
-        if (event === 'SIGNED_IN') {
-          setTimeout(() => {
-            navigate('/portal');
-          }, 0);
-        }
+        setLoading(false);
       }
     );
 
@@ -62,7 +58,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const redirectUrl = `${window.location.origin}/portal`;
+    const returnPath = authReturnPath(window.location.search);
+    const redirectUrl = `${window.location.origin}/auth${returnPath === '/start' ? '?returnTo=%2Fstart' : ''}`;
     
     const { error } = await supabase.auth.signUp({
       email,

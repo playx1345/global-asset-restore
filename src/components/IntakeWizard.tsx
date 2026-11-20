@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -24,6 +24,7 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { clearIntakeDraft, INTAKE_AUTH_PATH, readIntakeDraft, saveIntakeDraft } from "@/lib/intakeDraft";
 
 const TELEGRAM_URL = "https://t.me/spectrace";
 
@@ -89,12 +90,16 @@ const steps = ["Incident", "Details", "Assessment", "Submit"];
 const IntakeWizard = () => {
   const { user } = useAuth();
   const { toast } = useToast();
-  const [step, setStep] = useState(0);
-  const [incident, setIncident] = useState<string>("");
-  const [loss, setLoss] = useState("");
-  const [when, setWhen] = useState("");
-  const [details, setDetails] = useState({ platform: "", reference: "", summary: "" });
-  const [contact, setContact] = useState({ name: "", email: "" });
+  const navigate = useNavigate();
+  const [draft] = useState(() => {
+    try { return readIntakeDraft(window.sessionStorage); } catch { return null; }
+  });
+  const [step, setStep] = useState<number>(draft?.step ?? 0);
+  const [incident, setIncident] = useState<string>(draft?.incident ?? "");
+  const [loss, setLoss] = useState<string>(draft?.loss ?? "");
+  const [when, setWhen] = useState<string>(draft?.when ?? "");
+  const [details, setDetails] = useState(draft?.details ?? { platform: "", reference: "", summary: "" });
+  const [contact, setContact] = useState(draft?.contact ?? { name: "", email: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -146,7 +151,7 @@ const IntakeWizard = () => {
   };
 
   const submitToPortal = async () => {
-    if (!user || !validateContact()) return;
+    if (!user || submitting || !validateContact()) return;
     setSubmitting(true);
     const { error } = await supabase.from("cases").insert({
       client_id: user.id,
@@ -159,7 +164,20 @@ const IntakeWizard = () => {
       toast({ title: "Could not submit", description: "Please try again or use Telegram.", variant: "destructive" });
       return;
     }
+    try { clearIntakeDraft(window.sessionStorage); } catch { /* Storage may be disabled. */ }
     setSubmitted(true);
+  };
+
+  const signInToSubmit = () => {
+    let saved = false;
+    try {
+      saved = saveIntakeDraft(window.sessionStorage, { step: 3, incident, loss, when, details, contact });
+    } catch { /* Keep the visitor on the assessment if storage is unavailable. */ }
+    if (!saved) {
+      toast({ title: "Could not save your assessment", description: "Allow browser storage and try again. Your answers are still here.", variant: "destructive" });
+      return;
+    }
+    navigate(INTAKE_AUTH_PATH);
   };
 
   const openTelegram = () => {
@@ -369,8 +387,8 @@ const IntakeWizard = () => {
                       <Send className="h-5 w-5" /> {submitting ? "Submitting…" : "Submit to my secure portal"}
                     </Button>
                   ) : (
-                    <Button variant="cyber" size="lg" asChild>
-                      <Link to="/auth">Sign in to track this case in the portal</Link>
+                    <Button variant="cyber" size="lg" onClick={signInToSubmit}>
+                      Sign in to track this case in the portal
                     </Button>
                   )}
                 </div>

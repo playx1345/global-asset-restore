@@ -9,8 +9,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
 import { Shield } from 'lucide-react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import SEO from '@/components/SEO';
+import { authReturnPath } from '@/lib/intakeDraft';
 
 const signInSchema = z.object({
   email: z.string().trim().email({ message: 'Invalid email address' }).max(255),
@@ -31,7 +32,8 @@ type SignInFormData = z.infer<typeof signInSchema>;
 type SignUpFormData = z.infer<typeof signUpSchema>;
 
 export default function Auth() {
-  const { user, signIn, signUp } = useAuth();
+  const { user, loading, signIn, signUp } = useAuth();
+  const location = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const signInForm = useForm<SignInFormData>({
@@ -42,8 +44,8 @@ export default function Auth() {
     resolver: zodResolver(signUpSchema),
   });
 
-  if (user) {
-    return <Navigate to="/portal" replace />;
+  if (!loading && user) {
+    return <Navigate to={authReturnPath(location.search)} replace />;
   }
 
   const onSignIn = async (data: SignInFormData) => {
